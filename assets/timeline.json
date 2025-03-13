@@ -1,0 +1,67 @@
+[
+	
+	{
+		"type": "experience",
+		"title": "Fleet Performance Analytics Developer",
+		"institution": "Canada Steamship Lines",
+		"year": "May 2024 - Aug 2024",
+		"headline": "Optimised analysis pipelines and automated sensor mappings using Python.",
+		"link": "https://cslships.com/",
+		"logo": "CSL.png"
+	},
+	{
+		"type": "education",
+		"title": "Master of Applied Computer Science",
+		"institution": "Concordia University",
+		"year": "Jan 2023 - Dec 2024",
+		"headline": "Graduated with a GPA of 4.0/4.3.",
+		"link": "https://www.concordia.ca/",
+		"details": "",
+		"logo": "concordia.png"
+	},
+	{
+		"type": "experience",
+		"title": "Deep Learning Research Intern",
+		"institution": "Indian Institute of Information Technology, Una",
+		"year": "Feb 2021 - June 2021",
+		"headline": "Worked on stock market prediction using deep learning.",
+		"link": "https://iiitu.ac.in/",
+		"logo": "IIITU.png"
+	},
+	{
+		"type": "experience",
+		"title": "Data Science Intern",
+		"institution": "The Sparks Foundation",
+		"year": "Jan 2021 - Feb 2021",
+		"headline": "Exploratory data analysis on the Global Terrorism Database.",
+		"link": "https://thesparksfoundationsingapore.org/",
+		"logo": "TSF.png"
+	},
+	{
+		"type": "education",
+		"title": "B.Tech. Computer Science and Engineering",
+		"institution": "Indian Institute of Information Technology, Una",
+		"year": "2018 - 2022",
+		"headline": "Graduated with a GPA of 8.83/10.",
+		"link": "https://iiitu.ac.in/",
+		"logo": "IIITU.png"
+	},
+	{
+		"type": "experience",
+		"title": "Tutor",
+		"institution": "National Institute of Technology, Hamirpur",
+		"year": "2019 - 2020",
+		"headline": "Provided free after-school lessons in math and science for classes 1-10.",
+		"link": "https://nith.ac.in/literacy_mission/index.html",
+		"logo": "NITH.png"
+	},
+	{
+		"type": "experience",
+		"title": "Graphic Designer",
+		"institution": "Pixonoids",
+		"year": "2018 - 2019",
+		"headline": "Created digital graphics and design projects using Photoshop & Illustrator.",
+		"link": "https://www.instagram.com/pixonoids/",
+		"logo": "pixonoids.png"
+	}
+]

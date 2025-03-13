@@ -16,18 +16,18 @@ module.exports = {
 	daisyui: {
 		themes: [
 			{
-				myLight: {
+				light: {
 					...require("daisyui/src/theming/themes")["fantasy"],
 					depth: "0",
 				},
 			},
 			{
-				myDark: {
+				dark: {
 					...require("daisyui/src/theming/themes")["dim"],
 					depth: "0",
 				},
 			},
 		],
-		darkTheme: "myDark",
+		darkTheme: "dark",
 	},
 };
