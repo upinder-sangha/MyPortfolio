@@ -5,9 +5,10 @@
 		"title": "Fleet Performance Analytics Developer",
 		"institution": "Canada Steamship Lines",
 		"year": "May 2024 - Aug 2024",
-		"headline": "Optimised analysis pipelines and automated sensor mappings using Python.",
+		"de": "Optimised analysis pipelines and automated sensor mappings using Python.",
 		"link": "https://cslships.com/",
-		"logo": "CSL.png"
+		"logo": "CSL.png",
+		"headline":"Developed an optimized analysis pipeline by implementing dependency-based task sequencing of high dimensionality graph, enhancing process automation and technical accuracy in data monitoring using Python. • Automated the sensor attribute mapping process, using advanced string-matching algorithms and parallel processing techniques to cut mapping time by 80% and streamlined data validation and integration of time series data, identifying and flagging anomalies through clustering and statistical analysis. • Leveraged Power BIto generate and visualize reports, enhancing decision-making through data-driven insights."
 	},
 	{
 		"type": "education",

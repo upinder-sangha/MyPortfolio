@@ -17,7 +17,7 @@ module.exports = {
 		themes: [
 			{
 				light: {
-					...require("daisyui/src/theming/themes")["fantasy"],
+					...require("daisyui/src/theming/themes")["pastel"],
 					depth: "0",
 				},
 			},
