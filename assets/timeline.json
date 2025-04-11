@@ -1,14 +1,14 @@
 [
-	
 	{
 		"type": "experience",
 		"title": "Fleet Performance Analytics Developer",
 		"institution": "Canada Steamship Lines",
 		"year": "May 2024 - Aug 2024",
-		"de": "Optimised analysis pipelines and automated sensor mappings using Python.",
+		"headline": "Optimised analysis pipelines and automated sensor mappings using Python.",
 		"link": "https://cslships.com/",
 		"logo": "CSL.png",
-		"headline":"Developed an optimized analysis pipeline by implementing dependency-based task sequencing of high dimensionality graph, enhancing process automation and technical accuracy in data monitoring using Python. • Automated the sensor attribute mapping process, using advanced string-matching algorithms and parallel processing techniques to cut mapping time by 80% and streamlined data validation and integration of time series data, identifying and flagging anomalies through clustering and statistical analysis. • Leveraged Power BIto generate and visualize reports, enhancing decision-making through data-driven insights."
+		"tags": ["Python", "Data Engineering", "SQL", "Avava PI", "Power BI"],
+		"details": "Developed an optimized analysis pipeline by implementing dependency-based task sequencing of high dimensionality graph, enhancing process automation and technical accuracy in data monitoring using Python. Automated the sensor attribute mapping process, using advanced string-matching algorithms and parallel processing techniques to cut mapping time by 80% and streamlined data validation and integration of time series data, identifying and flagging anomalies through clustering and statistical analysis. Leveraged Power BI to generate and visualize reports, enhancing decision-making through data-driven insights."
 	},
 	{
 		"type": "education",
@@ -17,17 +17,20 @@
 		"year": "Jan 2023 - Dec 2024",
 		"headline": "Graduated with a GPA of 4.0/4.3.",
 		"link": "https://www.concordia.ca/",
-		"details": "",
-		"logo": "concordia.png"
+		"logo": "concordia.png",
+		"tags": ["Design Patterns", "Algorithms", "AI/ML", "Distributed Systems"],
+		"details": "Graduated with a GPA of 4.0/4.3. Completed advanced coursework in distributed systems, software architecture, and AI/ML techniques. Developed expertise in applying design patterns and algorithms to solve real-world problems. Participated in research projects and team-based software development initiatives like a lease management system and , honing skills in scalable system design and cloud-based application development."
 	},
 	{
 		"type": "experience",
 		"title": "Deep Learning Research Intern",
-		"institution": "Indian Institute of Information Technology, Una",
+		"institution": "IIIT, Una",
 		"year": "Feb 2021 - June 2021",
 		"headline": "Worked on stock market prediction using deep learning.",
 		"link": "https://iiitu.ac.in/",
-		"logo": "IIITU.png"
+		"logo": "IIITU.png",
+		"tags": [ "Python", "Deep Learning", "Statistics", "Tensorflow"],
+		"details": "Developed a hybrid algorithm using LSTMs for stock market prediction, leveraging technical and sentiment analysis from over 10,000 Twitter posts, resulting in a 15% improvement in accuracy over traditional models. Conducted experiments with multiple machine learning models to forecast stock prices based on historical NASDAQ data, enhancing understanding of market behavior. Employed advanced data visualization techniques to analyze model performance, providing actionable insights for data-driven decision-making and compared findings from past research papers to existing models."
 	},
 	{
 		"type": "experience",
@@ -36,25 +39,31 @@
 		"year": "Jan 2021 - Feb 2021",
 		"headline": "Exploratory data analysis on the Global Terrorism Database.",
 		"link": "https://thesparksfoundationsingapore.org/",
-		"logo": "TSF.png"
+		"logo": "TSF.png",
+		"tags": ["Data Analysis", "Python", "Data Visualization", "Clustering"],
+		"details": "Conducted comprehensive exploratory data analysis on the Global Terrorism Database, uncovering key insights into regional terrorism trends and fluctuations over time using clustering techniques to categorize incidents, enhancing the understanding of patterns and contributing to data-driven decision-making. Identified high-risk hotspots and vulnerable demographics most affected by terrorist attacks, enabling targeted interventions and policy recommendations."
 	},
 	{
 		"type": "education",
 		"title": "B.Tech. Computer Science and Engineering",
-		"institution": "Indian Institute of Information Technology, Una",
+		"institution": "IIIT, Una",
 		"year": "2018 - 2022",
 		"headline": "Graduated with a GPA of 8.83/10.",
 		"link": "https://iiitu.ac.in/",
-		"logo": "IIITU.png"
+		"logo": "IIITU.png",
+		"tags": ["Data Structures", "Algorithms", "AI/ML", "OOPS"],
+		"details": "Graduated with a GPA of 8.83/10. Completed a rigorous curriculum focused on core computer science principles including data structures, algorithms, object-oriented programming, and AI/ML. Participated in multiple software development and research projects, including a fake news detection chatbot. Developed strong problem-solving and analytical skills through coursework and hands-on experience."
 	},
 	{
 		"type": "experience",
 		"title": "Tutor",
-		"institution": "National Institute of Technology, Hamirpur",
+		"institution": "NIT, Hamirpur",
 		"year": "2019 - 2020",
 		"headline": "Provided free after-school lessons in math and science for classes 1-10.",
 		"link": "https://nith.ac.in/literacy_mission/index.html",
-		"logo": "NITH.png"
+		"logo": "NITH.png",
+		"tags": ["Mathematics", "Physics", "Chemistry", "Biology"],
+		"details": "Volunteered as part of the Literacy Mission to provide free after-school tutoring in mathematics, physics, chemistry, and biology to students from underprivileged backgrounds. Developed and delivered lesson plans tailored to individual learning needs, improving students' understanding and academic performance. Fostered an engaging and supportive learning environment."
 	},
 	{
 		"type": "experience",
@@ -63,6 +72,8 @@
 		"year": "2018 - 2019",
 		"headline": "Created digital graphics and design projects using Photoshop & Illustrator.",
 		"link": "https://www.instagram.com/pixonoids/",
-		"logo": "pixonoids.png"
+		"logo": "pixonoids.png",
+		"tags": ["Photoshop", "Illustrator", "Design"],
+		"details": "Designed promotional materials, social media graphics, and event posters using Adobe Photoshop and Illustrator. Collaborated with team members to create visually appealing and brand-consistent digital assets. Gained experience in design principles, color theory, and typography while contributing to the visual identity of Pixonoids."
 	}
 ]

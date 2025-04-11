@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-bg -z-1 relative overflow-hidden">
+  <div class=" -z-1 relative overflow-hidden">
     <!-- Floating Shapes -->
     <template v-for="(shape, index) in total_shapes" :key="'shape-' + index">
       <svg :class="[randomAnimationClass(), randomSizeClass()]" xmlns="http://www.w3.org/2000/svg"

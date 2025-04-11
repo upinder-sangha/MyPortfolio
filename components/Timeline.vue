@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="min-h-screen p-8 max-sm:p-4">
+  <section id="experience" class="min-h-screen p-8 max-sm:p-4 max-sm:px-1">
     <h2 class="text-3xl font-bold text-center mb-8">Experience & Education</h2>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
       <!-- Loop through experiences, showing only the first 4 if 'showAll' is false -->
@@ -13,12 +13,8 @@
           </svg>
         </div>
         <div :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
-          class="glass-effect shadow-md timeline-box p-0 mb-2 max-md:mb-1">
-          <!-- Conditionally pass direction based on screen size -->
+          class="glass-effect timeline-box p-0 mb-2 max-md:mb-1">
           <CardSmall 
-            @click="handleOpenModal(data)" 
-            class="hover:scale-[1.02]" 
-            role="button" 
             :data="data"
             :direction="isSmallScreen ? 'right' : (data.type == 'experience' ? 'right' : 'left')" 
           />
@@ -33,13 +29,6 @@
         {{ showAll ? 'Show Less' : 'See All Experiences' }}
       </button>
     </div>
-
-    <!-- Modal -->
-    <Modal 
-      :isOpen="isModalOpen" 
-      :data="selectedCardData" 
-      @close-modal="handleCloseModal" 
-    />
   </section>
 </template>
 
@@ -78,25 +67,10 @@ const displayedExperiences = computed(() => {
 const toggleShowAll = () => {
   showAll.value = !showAll.value;
 };
-
-// Modal logic
-const isModalOpen = ref(false);
-const selectedCardData = ref(null);
-
-const handleOpenModal = (data) => {
-  selectedCardData.value = data;
-  isModalOpen.value = true;
-};
-
-const handleCloseModal = () => {
-  isModalOpen.value = false;
-  selectedCardData.value = null;
-};
 </script>
 
 <style lang="postcss" scoped>
-/* Keep your custom styles if necessary */
 .glass-effect {
-  @apply backdrop-blur-sm bg-primary/30 border border-base-content/10;
+  @apply hover:bg-base-200 border border-transparent hover:border-info/50 backdrop-blur-sm bg-base-200;
 }
 </style>

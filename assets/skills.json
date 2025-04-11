@@ -1,0 +1,47 @@
+[
+    {
+      "category": "Programming",
+      "skills": [
+        { "name": "Python", "icon": "python" },
+        { "name": "Java", "icon": "java" },
+        { "name": "JavaScript", "icon": "javascript" },
+        { "name": "HTML/CSS", "icon": "html" },
+        { "name": "Node.js", "icon": "nodejs" },
+        { "name": "Vue.js", "icon": "vuejs" }
+      ]
+    },
+    {
+      "category": "Development",
+      "skills": [
+        { "name": "JUnit", "icon": "junit" },
+        { "name": "AWS", "icon": "aws" },
+        { "name": "Kubernetes", "icon": "kubernetes" },
+        { "name": "Docker", "icon": "docker" },
+        { "name": "Git", "icon": "git" },
+        { "name": "REST APIs", "icon": "restapi" }
+      ]
+    },
+    {
+      "category": "Machine Learning",
+      "skills": [
+        { "name": "TensorFlow", "icon": "tensorflow" },
+        { "name": "PyTorch", "icon": "pytorch" },
+        { "name": "Scikit-learn", "icon": "scikitlearn" },
+        { "name": "MLflow", "icon": "mlflow" },
+        { "name": "Neural Networks", "icon": "neuralnetworks" },
+        { "name": "NLP", "icon": "nlp" }
+      ]
+    },
+    {
+      "category": "Analytics",
+      "skills": [
+        { "name": "Power BI", "icon": "powerbi" },
+        { "name": "SQL", "icon": "sql" },
+        { "name": "Predictive Modeling", "icon": "predictivemodeling" },
+        { "name": "Statistical Analysis", "icon": "dataanalysis" },
+        { "name": "ETL", "icon": "etl" },
+        { "name": "Excel", "icon": "excel" }
+      ]
+    }
+  ]
+  
