@@ -12,7 +12,7 @@
           <!-- Loop through skills within each category -->
           <div class="flex flex-wrap gap-2 md:gap-6 justify-center">
             <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex"
-              class="card hover:border border-info/50 pb-1 p-2 md:pb-2 md:p-4 items-center flex-1 min-w-[5rem] max-w-[6rem] md:min-w-[6rem] md:max-w-[10rem] text-center">
+              class="card pb-1 p-2 md:pb-2 md:p-4 items-center flex-1 min-w-[5rem] max-w-[6rem] md:min-w-[6rem] md:max-w-[10rem] text-center">
               <img :src="`/icons/${skill.icon}.svg`" alt="abc" class="w-12 h-12 md:w-16 md:h-16 mb-4" />
               <span class="text-sm md:text-lg">{{ skill.name }}</span>
             </div>
