@@ -12,13 +12,16 @@
     <!-- Projects Section -->
     <Projects />
 
+    <!-- Certificates Section -->
+    <Certificates />
+
     <!-- Contact Section -->
     <Contact />
+
   </div>
 </template>
 
 <script setup>
-import Navbar from '~/components/Navbar.vue';
 
 // No reactive state needed for now
 </script>

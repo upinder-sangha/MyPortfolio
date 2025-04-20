@@ -1,6 +1,8 @@
 <template>
-  <div :class="['flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-md:w-[85vw] md:w-[45vw] lg:w-[40vw] xl:w-[35vw]']"
-    @click="toggleExpand">
+  <div
+    :class="['hover:scale-105 transition-transform relative flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-md:w-[85vw] md:w-[45vw] lg:w-[40vw] xl:w-[35vw]']"
+    @click="toggleExpand"
+  >
     <!-- Left-aligned Card -->
     <template v-if="direction === 'left'">
       <!-- Top Section -->
@@ -26,35 +28,22 @@
           class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full bg-transparent" />
       </div>
 
-      <!-- Badges + Arrow -->
-      <div class="pl-2 flex justify-between items-center pt-1 sm:mr-20">
-        <!-- Upper Arrow -->
-        <div v-if="!isExpanded" class="transition-transform duration-300">
+      <!-- Details -->
+      <div
+        :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
+        <ul class="flex flex-wrap flex-row-reverse gap-2 px-4 pt-2">
+          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
+        </ul>
+        <p class="text-base-content/70 max-sm:text-xs sm:pr-20 text-sm p-2 pl-4 text-justify pb-8">{{ data.details }}</p>
+      </div>
+
+      <!-- Arrow (Bottom Left) -->
+      <div class="absolute bottom-1 left-1">
+        <div class="transition-transform duration-300" :class="{ 'rotate-180': isExpanded }">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 stroke-base-content/50" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
           </svg>
-        </div>
-        <div v-else class="transition-transform duration-300 rotate-180">
-          <!-- Arrow when expanded -->
-        </div>
-        <!-- Conditionally render badges on small screens -->
-        <ul v-if="!isMobile || isExpanded" class="flex flex-wrap flex-row-reverse gap-2">
-          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
-        </ul>
-      </div>
-
-      <!-- Details -->
-      <div
-        :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
-        <p class="text-base-content/70 max-sm:text-xs sm:pr-20 text-sm p-2 pl-4 text-justify">{{ data.details }}</p>
-        <div class="pl-2 flex justify-between items-center sm:pr-20">
-          <div class="transition-transform duration-300 rotate-180">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 stroke-base-content/50" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
         </div>
       </div>
     </template>
@@ -71,8 +60,7 @@
             {{ data.title }}
           </div>
 
-          <div
-            class="flex flex-wrap gap-1 max-sm:text-xs text-sm text-base-content/70 max-sm:leading-tight break-words whitespace-normal">
+          <div class="flex flex-wrap gap-1 max-sm:text-xs text-sm text-base-content/70 max-sm:leading-tight break-words whitespace-normal">
             <a class="hover:underline" v-if="data.link" :href="data.link" target="_blank">
               {{ data.institution }}
             </a>
@@ -85,26 +73,18 @@
         </div>
       </div>
 
-      <!-- Badges + Arrow -->
-      <div class="flex justify-between items-center pt-1 sm:ml-20">
-        <!-- Conditionally render badges on small screens -->
-        <ul v-if="!isMobile || isExpanded" class="flex flex-wrap gap-2">
-          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
-        </ul>
-        <!-- Upper Arrow -->
-        <div v-if="!isExpanded" class="transition-transform duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 stroke-base-content/50" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </div>
-
       <!-- Details -->
       <div
         :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
-        <p class="text-base-content/70 max-sm:text-xs sm:pl-20 text-sm p-2 pr-4 text-justify">{{ data.details }}</p>
-        <div class="transition-transform duration-300 rotate-180">
+        <ul class="flex flex-wrap gap-2 px-2 pt-2 sm:pl-20">
+          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
+        </ul>
+        <p class="text-base-content/70 max-sm:text-xs sm:pl-20 text-sm p-2 pr-4 text-justify pb-8">{{ data.details }}</p>
+      </div>
+
+      <!-- Arrow (Bottom Right) -->
+      <div class="absolute bottom-1 right-1">
+        <div class="transition-transform duration-300" :class="{ 'rotate-180': isExpanded }">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 stroke-base-content/50" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
@@ -116,7 +96,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const props = defineProps({
   data: Object,
@@ -130,25 +110,21 @@ const toggleExpand = () => {
   isExpanded.value = !isExpanded.value;
 };
 
-// Function to check screen size
 const checkScreenSize = () => {
-  isMobile.value = window.innerWidth < 640; // 640px is Tailwind's `sm` breakpoint
+  isMobile.value = window.innerWidth < 640;
 };
 
-// Add event listener for screen resize
 onMounted(() => {
   checkScreenSize();
   window.addEventListener('resize', checkScreenSize);
 });
 
-// Cleanup event listener
 onUnmounted(() => {
   window.removeEventListener('resize', checkScreenSize);
 });
 </script>
 
 <style scoped>
-/* Smooth transition for max-height */
 .transition-max-height {
   transition: max-height 0.3s ease-in-out;
 }

@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer p-10 bg-base-200 text-base-content">
+  <footer class="glass-effect footer p-10 text-base-content">
     <div class="text-center">
       <p>© 2023 Your Name. All rights reserved.</p>
       <div class="flex justify-center gap-4 mt-4">
@@ -14,3 +14,9 @@
 <script setup>
 // No reactive state needed for now
 </script>
+
+<style lang="postcss" scoped>
+.glass-effect {
+  @apply backdrop-blur-lg bg-base-300 ;
+}
+</style>

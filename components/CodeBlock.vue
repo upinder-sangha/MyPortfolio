@@ -1,7 +1,7 @@
 <template>
-  <div class="mockup-code w-[90vw] bg-base-200 max-w-3xl mx-auto p-4 text-sm max-sm:text-xs">
+  <div class="mockup-code bg-base-200 p-4 text-xs md:text-sm">
       <pre data-prefix="$"
-        class="text-base-content/50"><code class="text-base-content">Hey, I'm Upinder - I make lives easier through code.</code></pre>
+        class="text-base-content/50"><code class="text-base-content">I make lives easier through code.</code></pre>
       <pre data-prefix="/*"
         class="text-base-content/50"><code>I build clean, efficient, and user-focused software,</code></pre>
       <pre data-prefix=""
@@ -9,11 +9,10 @@
       <pre data-prefix=""
         class="text-base-content/50"><code>Perpetually learning, breaking things, and turning ideas into experiments.</code><code class="text-base-content/30"> */</code></pre>
       <pre data-prefix="" class="text-base-content/50"><code></code></pre>
-      <pre data-prefix="//" class="text-base-content/50"><code>This function? It's just formatted text.</code></pre>
       <pre data-prefix=">"
-        class="text-base-content/50"><code class="text-success">function</code><code class="text-info"> welcomeUser() </code><code class="text-success">{</code></pre>
+        class="text-base-content/50"><code class="text-success">function</code><code class="text-info"> showSomethingCool() </code><code class="text-success">{</code></pre>
       <pre data-prefix=">"
-        class="text-base-content/50"><code class="text-info">  console.log(</code><code class="text-base-content">"Welcome to my portfolio!"</code><code class="text-info">)</code><code class="text-base-content">;</code></pre>
+        class="text-base-content/50"><code class="text-info">  action.go(</code><code class="text-base-content">"Reload the website! Just do it! Seriously."</code><code class="text-info">)</code><code class="text-base-content">;</code></pre>
       <pre data-prefix=">" class="text-base-content/50"><code class="text-success">}</code></pre>
       <pre data-prefix="" class="text-base-content/50"><code class="text-success"></code></pre>
       <pre data-prefix="/*"
