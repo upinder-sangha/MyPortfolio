@@ -1,6 +1,6 @@
 <template>
-  <section id="experience" class="bg-base-200 min-h-screen py-12 md:py-20 p-4 md:p-8 max-sm:px-1">
-    <h2 class="text-3xl font-bold text-center mb-8">Experience & Education</h2>
+  <section id="experience" class="bg-base-200 min-h-screen py-12 md:py-20 md:px-4 px-1">
+    <h2 class="text-3xl font-bold text-center mb-8">Education & Experience</h2>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
       <!-- Loop through experiences, showing only the first 4 if 'showAll' is false -->
       <li v-for="(data, index) in listOfExperiences" :key="index"">

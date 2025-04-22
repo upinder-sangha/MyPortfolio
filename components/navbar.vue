@@ -21,6 +21,9 @@
             <NuxtLink to="#projects">Projects</NuxtLink>
           </li>
           <li>
+            <NuxtLink to="#certificates">Certificates</NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="#contact">Contact</NuxtLink>
           </li>
         </ul>
@@ -40,6 +43,9 @@
         </li>
         <li>
           <NuxtLink to="#projects">Projects</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="#certificates">Certificates</NuxtLink>
         </li>
         <li>
           <NuxtLink to="#contact">Contact</NuxtLink>

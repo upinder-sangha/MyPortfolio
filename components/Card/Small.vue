@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['hover:scale-105 transition-transform relative flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-md:w-[85vw] md:w-[45vw] lg:w-[40vw] xl:w-[35vw]']"
+    :class="['hover:scale-105 transition-transform relative flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-w-lg']"
     @click="toggleExpand"
   >
     <!-- Left-aligned Card -->
@@ -31,7 +31,7 @@
       <!-- Details -->
       <div
         :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
-        <ul class="flex flex-wrap flex-row-reverse gap-2 px-4 pt-2">
+        <ul class="flex flex-wrap flex-row-reverse gap-2 px-4 pt-2 pr-20">
           <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
         </ul>
         <p class="text-base-content/70 max-sm:text-xs sm:pr-20 text-sm p-2 pl-4 text-justify pb-8">{{ data.details }}</p>
