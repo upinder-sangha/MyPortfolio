@@ -1,25 +1,25 @@
 <template>
-  <section id="experience" class="bg-base-200 min-h-screen py-12 md:py-20 md:px-4 px-1">
+  <section id="experience" class="bg-base-200 py-12 md:py-20 md:px-4 px-1">
     <h2 class="text-3xl font-bold text-center mb-8">Education & Experience</h2>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
       <!-- Loop through experiences, showing only the first 4 if 'showAll' is false -->
       <li v-for="(data, index) in listOfExperiences" :key="index"">
-        <hr />
+        <hr class="bg-gray-400"/>
         <div class="timeline-middle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
-            <path fill-rule="evenodd" class="fill-base-300"
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="h-5 w-5">
+            <path fill-rule="evenodd" class="fill-gray-400"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
               clip-rule="evenodd" />
           </svg>
         </div>
-        <div :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
-          class="glass-effect timeline-box max-sm:mb-6">
+        <div role="button" :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
+          class="glass-effect timeline-box">
           <CardSmall
             :data="data"
             :direction="isSmallScreen ? 'right' : (data.type == 'experience' ? 'right' : 'left')" 
           />
         </div>
-        <hr />
+        <hr class="bg-gray-400"/>
       </li>
     </ul>
   </section>

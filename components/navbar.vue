@@ -1,88 +1,98 @@
 <template>
-  <div class="navbar bg-base-100/40 fixed top-0 w-full py-0 z-50 border-b border-base-content/10 min-h-12">
-    <div class="navbar-start">
-      <details class="dropdown">
-        <summary role="button" class="btn btn-circle btn-ghost lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-          </svg>
-        </summary>
-        <ul class="menu menu-md dropdown-content glass-effect rounded-box w-52 my-2">
-          <li>
-            <NuxtLink to="#about">About</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="#experience">Experience</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="#skills">Skills</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="#projects">Projects</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="#certificates">Certificates</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="#contact">Contact</NuxtLink>
-          </li>
-        </ul>
-      </details>
-      <a class="btn btn-ghost text-xl font-normal">Upinder Singh Sangha</a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        <li>
-          <NuxtLink to="#about">About</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#experience">Experience</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#skills">Skills</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#projects">Projects</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#certificates">Certificates</NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#contact">Contact</NuxtLink>
-        </li>
-      </ul>
-    </div>
-    <div class="navbar-end">
-      <ThemeController/>
-    </div>
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-base-100/50">
+    <nav class="px-4">
+      <div class="flex justify-between items-center h-14">
+        <!-- Logo / Name -->
+        <NuxtLink to="/" class="text-lg sm:text-xl tracking-wide hover:opacity-70 transition-opacity text-base-content">
+          Upinder Singh Sangha
+        </NuxtLink>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex space-x-6 px-4">
+          <NuxtLink to="#about" class="nav-link">About</NuxtLink>
+          <NuxtLink to="#experience" class="nav-link">Experience</NuxtLink>
+          <NuxtLink to="#skills" class="nav-link">Skills</NuxtLink>
+          <NuxtLink to="#projects" class="nav-link">Projects</NuxtLink>
+          <NuxtLink to="#certificates" class="nav-link">Certificates</NuxtLink>
+          <NuxtLink to="#contact" class="nav-link">Contact</NuxtLink>
+        </div>
+
+        <!-- Theme + Mobile Toggle -->
+        <div class="flex items-center space-x-3">
+          <ThemeController />
+
+          <button @click="toggleMenu" class="md:hidden p-2 rounded hover:bg-base-200 transition">
+            <svg class="h-6 w-6 text-base-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path v-if="!menuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <transition name="mobile-menu" @before-enter="onBeforeEnter" @after-leave="onAfterLeave">
+  <div
+    v-show="menuOpen"
+    class="md:hidden pt-6 space-y-6 pb-6 text-center border-t border-b border-base-300"
+  >
+    <NuxtLink to="#about" @click="toggleMenu" class="block nav-link">About</NuxtLink>
+    <NuxtLink to="#experience" @click="toggleMenu" class="block nav-link">Experience</NuxtLink>
+    <NuxtLink to="#skills" @click="toggleMenu" class="block nav-link">Skills</NuxtLink>
+    <NuxtLink to="#projects" @click="toggleMenu" class="block nav-link">Projects</NuxtLink>
+    <NuxtLink to="#certificates" @click="toggleMenu" class="block nav-link">Certificates</NuxtLink>
+    <NuxtLink to="#contact" @click="toggleMenu" class="block nav-link">Contact</NuxtLink>
   </div>
+</transition>
+
+    </nav>
+  </header>
 </template>
 
+<script setup>
+import { ref } from 'vue'
 
+const menuOpen = ref(false)
+const toggleMenu = () => {
+  // If open, delay close
+  if (menuOpen.value) {
+    setTimeout(() => {
+      menuOpen.value = false
+    }, 200) // adjust delay here (ms)
+  } else {
+    menuOpen.value = true
+  }
+}
+</script>
 
 <style lang="postcss" scoped>
-.navbar {
-  position: fixed;
-  /* Ensure the navbar is fixed */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  /* Ensure it stays on top of other content */
+.nav-link {
+  @apply relative text-base text-base-content transition-colors duration-300 hover:text-primary;
 }
 
-.navbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(16px);
-  z-index: -1;
+.nav-link::after {
+  content: "";
+  @apply absolute left-0 -bottom-0.5 w-0 h-0.5 bg-primary transition-all duration-300;
 }
 
-.glass-effect {
-  @apply backdrop-blur-lg bg-base-100/50 border border-base-content/10;
+.nav-link:hover::after {
+  width: 100%;
 }
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: all 0.3s ease;
+}
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.mobile-menu-enter-to,
+.mobile-menu-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 </style>
