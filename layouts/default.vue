@@ -16,12 +16,9 @@
     <Navbar />
 
     <!-- Main Content -->
-    <main class="pt-20 relative z-1">
+    <main class="relative z-1">
       <slot />
     </main>
-
-    <!-- Footer -->
-    <Footer class="z-1" />
   </div>
 </template>
 

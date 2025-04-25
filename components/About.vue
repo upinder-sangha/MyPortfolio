@@ -1,12 +1,11 @@
 <template>
-  <section id="about" class="py-6 sm:py-12 md:py-2 min-h-screen px-6 md:px-20 xl:py-12 max-w-[96rem] mx-auto">
+  <section id="about" class="relative pt-24 xl:pt-28 min-h-svh mx-6 md:px-20 max-w-[96rem] mx-auto">
     <div
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
 
       <!-- Right: Image & Social Icons -->
       <div class="lg:w-1/3 flex flex-col items-center gap-4">
-        <div
-          class="w-56 h-56 sm:w-56 sm:h-56 md:w-72 md:h-72 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
+        <div class="w-56 h-56 sm:w-56 sm:h-56 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
           <img :src="'/images/upinder.png'" alt="Upinder Singh Sangha" class="w-full h-full object-cover" />
         </div>
 
@@ -40,7 +39,7 @@
       <div class="w-[90VW] xl:w-2/3 max-w-3xl">
         <div class="text-center xl:text-left space-y-2 md:space-y-4 pb-4 md:pb-8">
           <p class="text-md md:text-lg md:text-xl font-bold">👋 Hi, I'm</p>
-          <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold">Upinder Sangha</h1>
+          <h1 class="text-4xl sm:text-5xl xl:text-7xl font-extrabold">Upinder Sangha</h1>
           <p class="hidden sm:inline-block text-lg">
             Developer | Analyst | Learner
           </p>
@@ -49,16 +48,18 @@
           </p>
         </div>
 
-        <div class="mt-8 sm:hidden space-y-4 text-center xl:text-left px-6">
-          <div class="text-info">
-            <p class="inline-block bg-info/20 px-3 py-2 rounded-lg">
+        <div
+          class="-mx-6 sm:hidden text-center xl:text-left  bg-gradient-to-t from-transparent via-base-100 to-transparent">
+          <div class="-mx-6 text-info bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
+            <p class="px-12">
               I make lives easier through code.
             </p>
           </div>
 
-          <div class="text-sm text-base-content/70">
-            <p class="inline-block bg-base-200/30 px-4 py-2 rounded-md">
-              I build clean, efficient, and user-focused software,<br />
+          <div
+            class="-mx-6 text-sm text-base-content/70 bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
+            <p class="px-16">
+              I build clean, efficient, and user-focused software,
               and automate the boring stuff (often the slightly interesting too).
             </p>
           </div>
@@ -67,6 +68,12 @@
           <CodeBlock />
         </div>
       </div>
+    </div>
+    <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-base-content/50" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
     </div>
   </section>
 </template>
@@ -99,3 +106,10 @@ onMounted(() => {
     .go()
 })
 </script>
+
+<style scoped>
+.text-glow-info {
+  text-shadow:
+    0 0 20px
+}
+</style>

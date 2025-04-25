@@ -1,27 +1,38 @@
 <template>
-  <div>
-    <!-- About Section -->
-    <About />
+<div class="h-screen overflow-y-scroll snap-y snap-proximity scroll-smooth">
+  <!-- About Section -->
+    <section class="snap-start">
+      <About />
+    </section>
 
     <!-- Experience/Education Section -->
-    <Timeline />
+    <section class="snap-start scroll-mt-10">
+      <Timeline />
+    </section>
 
     <!-- Skills Section -->
-    <Skills />
+    <section class="snap-align-none">
+      <Skills />
+    </section>
 
     <!-- Projects Section -->
-    <Projects />
+    <section class="snap-align-none">
+      <Projects />
+    </section>
 
     <!-- Certificates Section -->
-    <Certificates />
+    <section class="snap-align-none">
+      <Certificates />
+    </section>
 
     <!-- Contact Section -->
-    <Contact />
+    <section class="snap-align-none">
+      <Contact />
+    </section>
 
+    <!-- Footer Section -->
+    <section class="snap-align-none">
+      <Footer />
+    </section>
   </div>
 </template>
-
-<script setup>
-
-// No reactive state needed for now
-</script>
