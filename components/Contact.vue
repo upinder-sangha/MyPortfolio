@@ -1,6 +1,6 @@
 <template>
-  <section id="contact" class="py-12 md:py-20 p-4 md:p-8 bg-base-200">
-    <h2 class="text-4xl font-bold text-center mb-12">Contact Me</h2>
+  <section id="contact" class="py-12 md:py-20 p-4 md:p-8 bg-base-300/50 backdrop-blur-sm">
+    <h2 class="font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">Let’s Connect</h2>
 
     <form @submit.prevent="handleSubmit" class="max-w-md mx-auto grid grid-cols-1 gap-4">
       <div class="form-control">

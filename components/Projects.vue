@@ -1,8 +1,8 @@
 <template>
-  <section id="projects" class="py-12 md:py-20 p-4 md:p-8 bg-base-200 ">
-    <h2 class="text-4xl font-bold text-center mb-12">🚀 Projects</h2>
+  <section id="projects" class="py-12 md:py-20 p-6 md:p-8 bg-base-300/50 backdrop-blur-sm ">
+    <h2 class="font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">What I’ve Built</h2>
     <div class="max-w-[88rem] mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 justify-items-center place-content-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 justify-items-center place-content-center">
         <div v-for="repo in repos" :key="repo.id"
           class="bg-base-100 text-base-content flex flex-col sm:flex-row rounded-xl overflow-hidden  hover:shadow-md transition-transform duration-300 hover:scale-[1.01] w-full max-w-xl md:max-w-2xl">
           <!-- Image -->
@@ -12,18 +12,18 @@
           </div>
 
           <!-- Content -->
-          <div class="sm:w-7/12 w-full p-4 flex flex-col justify-between">
+          <div class="sm:w-7/12 w-full max-sm:pt-0 p-4 flex flex-col justify-between">
             <div class="flex-1">
-              <h3 class="text-xl font-semibold mb-2">
+              <h3 class="text-xl font-normal mb-2">
                 {{ repo.name }}
               </h3>
-              <p class="text-sm opacity-80">
+              <p class="font-light text-sm opacity-80">
                 {{ repo.description }}
               </p>
             </div>
 
             <div class="mt-4 text-right">
-              <a :href="repo.html_url" target="_blank" class="rounded-md btn btn-neutral btn-sm">
+              <a :href="repo.html_url" target="_blank" class="rounded-md btn btn-neutral btn-sm font-normal">
                 GitHub
               </a>
             </div>
@@ -37,7 +37,7 @@
           class="inline-flex items-center gap-3 text-info text-xl md:text-2xl font-medium transition-transform duration-300 hover:scale-[1.03]">
           <img :src="`/icons/github_creative.svg`" alt="GitHub"
             class="w-10 h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-          <span class="hover:underline hover:underline-offset-4 decoration-info/40 hover:decoration-info">
+          <span class="font-light hover:underline hover:underline-offset-4 decoration-info/40 hover:decoration-info">
             More Projects
           </span>
           <svg class="w-5 h-5 text-info transition-transform duration-300 group-hover:translate-x-1" fill="none"

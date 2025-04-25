@@ -1,11 +1,11 @@
 <template>
-  <section id="about" class="relative pt-24 xl:pt-28 min-h-svh mx-6 md:px-20 max-w-[96rem] mx-auto">
+  <section id="about" class="relative pt-24 xl:pt-28 min-h-svh md:px-20 max-w-[96rem] mx-auto">
     <div
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
 
       <!-- Right: Image & Social Icons -->
-      <div class="lg:w-1/3 flex flex-col items-center gap-4">
-        <div class="w-56 h-56 sm:w-56 sm:h-56 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
+      <div class="lg:w-1/3 flex flex-col items-center gap-2 sm:gap-4">
+        <div class="w-48 h-48 sm:w-56 sm:h-56 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
           <img :src="'/images/upinder.png'" alt="Upinder Singh Sangha" class="w-full h-full object-cover" />
         </div>
 
@@ -36,10 +36,10 @@
       </div>
 
       <!-- Left: Text & Code Block -->
-      <div class="w-[90VW] xl:w-2/3 max-w-3xl">
-        <div class="text-center xl:text-left space-y-2 md:space-y-4 pb-4 md:pb-8">
-          <p class="text-md md:text-lg md:text-xl font-bold">👋 Hi, I'm</p>
-          <h1 class="text-4xl sm:text-5xl xl:text-7xl font-extrabold">Upinder Sangha</h1>
+      <div class="sm:w-[90VW] xl:w-2/3 max-w-3xl">
+        <div class="text-center xl:text-left md:space-y-4 pb-4 md:pb-8">
+          <p class="font-urbanist text-md md:text-lg md:text-xl font-extrabold">👋 Hi, I'm</p>
+          <h1 class="font-urbanist text-4xl sm:text-5xl xl:text-7xl font-extrabold">Upinder Sangha</h1>
           <p class="hidden sm:inline-block text-lg">
             Developer | Analyst | Learner
           </p>
@@ -49,16 +49,16 @@
         </div>
 
         <div
-          class="-mx-6 sm:hidden text-center xl:text-left  bg-gradient-to-t from-transparent via-base-100 to-transparent">
-          <div class="-mx-6 text-info bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
-            <p class="px-12">
+          class="sm:hidden text-center xl:text-left bg-gradient-to-t from-transparent via-base-100 to-transparent">
+          <div class="text-info bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
+            <p class="font-caveat font-semibold text-2xl px-4">
               I make lives easier through code.
             </p>
           </div>
 
           <div
-            class="-mx-6 text-sm text-base-content/70 bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
-            <p class="px-16">
+            class="text-sm text-base-content/70 bg-gradient-to-t from-transparent via-base-100 to-transparent ">
+            <p class="px-4">
               I build clean, efficient, and user-focused software,
               and automate the boring stuff (often the slightly interesting too).
             </p>

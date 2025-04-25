@@ -1,6 +1,6 @@
 <template>
-  <section id="certificates" class="py-12 md:py-20 p-4 md:p-8 bg-base-100">
-    <h2 class="text-4xl font-bold text-center mb-12">🎓 Certifications</h2>
+  <section id="certificates" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/50 backdrop-blur-sm">
+    <h2 class="font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center md:mb-10">What I’ve Earned</h2>
 
     <!-- Carousel Container -->
     <div class="relative w-full max-w-6xl mx-auto">

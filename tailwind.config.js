@@ -10,7 +10,16 @@ module.exports = {
 		"./app.vue",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				raleway: ["Raleway", "sans-serif"],
+				sans: ["Inter", "sans-serif"],
+				manrope: ["Manrope", "sans-serif"],
+				roboto: ["Roboto", "sans-serif"],
+				urbanist: ["Urbanist", "sans-serif"],
+				caveat: ["Caveat", "cursive"],
+			},
+		},
 	},
 	plugins: [daisyui],
 	daisyui: {

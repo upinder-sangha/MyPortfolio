@@ -1,6 +1,6 @@
 <template>
   <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-base-100/50">
-    <nav class="px-4">
+    <nav class="px-4 font-raleway">
       <div class="flex justify-between items-center h-14">
         <!-- Logo / Name -->
         <NuxtLink to="/" class="text-lg sm:text-xl tracking-wide hover:opacity-70 transition-opacity text-base-content">
