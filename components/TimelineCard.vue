@@ -24,7 +24,7 @@
             </svg>
           </div>
         </div>
-        <img :src="`/logos/${data.logo}`" alt="data.institution"
+        <img loading="lazy" :src="`/logos/${data.logo}`" alt="data.institution"
           class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full bg-transparent" />
       </div>
 

@@ -7,7 +7,7 @@
           class="bg-base-100 text-base-content flex flex-col sm:flex-row rounded-xl overflow-hidden  hover:shadow-md transition-transform duration-300 hover:scale-[1.01] w-full max-w-xl md:max-w-2xl">
           <!-- Image -->
           <div class="sm:w-5/12 w-full h-48 sm:h-auto overflow-hidden flex-shrink-0 p-3 sm:p-2 bg-base-100">
-            <img :src="projectImages[repo.name] || '/images/placeholder.png'" :alt="repo.name"
+            <img loading="lazy" :src="projectImages[repo.name] || '/images/placeholder.png'" :alt="repo.name"
               class="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-md " />
           </div>
 

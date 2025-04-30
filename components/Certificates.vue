@@ -19,7 +19,7 @@
               'hidden': index !== currentIndex && index !== nextIndex && index !== prevIndex
             }"
           >
-            <img 
+            <img loading="lazy"
               :src="certificate.image_path" 
               :alt="certificate.title"
               class="w-full h-full object-contain cursor-pointer"
@@ -36,7 +36,7 @@
             class="h-full w-1/3 absolute transition-all duration-500 ease-in-out flex items-center"
             :class="desktopSlideClasses(index)"
           >
-            <img 
+            <img loading="lazy"
               :src="certificate.image_path" 
               :alt="certificate.title"
               class="w-full h-full object-contain cursor-pointer"
@@ -83,7 +83,7 @@
         <button class="btn btn-sm btn-circle btn-ghost absolute top-4 right-4 z-10" @click="closeModal">
           ✕
         </button>
-        <img 
+        <img loading="lazy"
           :src="selectedCertificate.image_path" 
           :alt="selectedCertificate.title"
           class="object-contain rounded-box"

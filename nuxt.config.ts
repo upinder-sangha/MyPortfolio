@@ -10,5 +10,6 @@ export default defineNuxtConfig({
   ],  
   devServer: {
     host: '0.0.0.0'
-  }
+  },
+  nitro: { preset: 'static' },
 })

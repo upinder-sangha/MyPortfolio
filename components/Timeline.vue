@@ -14,7 +14,7 @@
         </div>
         <div role="button" :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
           class="glass-effect timeline-box">
-          <CardSmall
+          <TimelineCard
             :data="data"
             :direction="isSmallScreen ? 'right' : (data.type == 'experience' ? 'right' : 'left')" 
           />

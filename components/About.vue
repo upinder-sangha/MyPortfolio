@@ -6,7 +6,7 @@
       <!-- Right: Image & Social Icons -->
       <div class="lg:w-1/3 flex flex-col items-center gap-2 sm:gap-4">
         <div class="w-48 h-48 sm:w-56 sm:h-56 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
-          <img :src="'/images/upinder.png'" alt="Upinder Singh Sangha" class="w-full h-full object-cover" />
+          <img loading="lazy" :src="'/images/upinder.png'" alt="Upinder Singh Sangha" class="w-full h-full object-cover" />
         </div>
 
         <!-- Social Icons under image -->
