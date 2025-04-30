@@ -24,7 +24,7 @@
             </svg>
           </div>
         </div>
-        <img :src="`/logos/${data.logo}`" alt="Profile"
+        <img :src="`/logos/${data.logo}`" alt="data.institution"
           class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full bg-transparent" />
       </div>
 
@@ -52,7 +52,7 @@
     <template v-else>
       <!-- Top Section -->
       <div class="flex justify-start items-center gap-4 text-left">
-        <img :src="`/logos/${data.logo}`" alt="Profile"
+        <img :src="`/logos/${data.logo}`" :alt="data.institution"
           class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full bg-transparent" />
         <div class="flex flex-col">
           <span class="font-light max-sm:text-xs leading-tight text-sm text-base-content/70">{{ data.year }}</span>

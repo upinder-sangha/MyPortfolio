@@ -14,7 +14,7 @@
             <div class="flex flex-wrap gap-2 md:gap-6 justify-center">
               <div v-for="(skill, skillIndex) in category.skills" :key="skillIndex"
                 class="card pb-1 p-2 items-center flex-1 min-w-[5rem] max-w-[6rem]  text-center">
-                <img :src="`/icons/${skill.icon}.svg`" alt="abc" class="w-12 h-12 mb-4" />
+                <img :src="`/icons/${skill.icon}.svg`" :alt="skill.name" class="w-12 h-12 mb-4" />
                 <span class="font-light text-sm md:text-md">{{ skill.name }}</span>
               </div>
             </div>
