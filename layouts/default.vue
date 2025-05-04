@@ -71,8 +71,8 @@ const getShapePath = (index) => ({
 });
 
 const custom_styles = [
-  'stroke-success/50', 'stroke-info/50', 'stroke-secondary/50', 'stroke-accent-content/50',
-  'stroke-info-content/50', 'stroke-success-content/50', 'stroke-error/50'
+  'stroke-info/40', 'stroke-accent-content/40',
+  'stroke-info-content/40', 'stroke-success-content/40', 'stroke-error/40'
 ];
 
 const animation_classes = ['animate-float1', 'animate-float2', 'animate-float3'];
