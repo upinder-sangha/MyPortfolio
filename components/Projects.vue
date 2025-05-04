@@ -1,6 +1,7 @@
 <template>
-  <section id="projects" class="py-12 md:py-20 p-6 md:p-8 bg-base-300/50 backdrop-blur-sm ">
-    <h2 class="font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">What I’ve Built</h2>
+  <section id="projects" class="py-12 md:py-20 p-6 md:p-8 bg-base-200/50 backdrop-blur-sm ">
+    <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">
+      What I’ve Built</h2>
     <div class="max-w-[88rem] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 justify-items-center place-content-center">
         <div v-for="repo in repos" :key="repo.id"
@@ -14,7 +15,7 @@
           <!-- Content -->
           <div class="sm:w-7/12 w-full max-sm:pt-0 p-4 flex flex-col justify-between">
             <div class="flex-1">
-              <h3 class="text-xl font-normal mb-2">
+              <h3 class="text-info-content text-xl font-normal mb-2">
                 {{ repo.name }}
               </h3>
               <p class="font-light text-sm opacity-80">
@@ -23,7 +24,8 @@
             </div>
 
             <div class="mt-4 text-right">
-              <a :href="repo.html_url" target="_blank" class="rounded-md btn btn-neutral btn-sm font-normal">
+              <a :href="repo.html_url" target="_blank"
+                class="rounded-md border-success-content/50 !text-success-content btn btn-sm btn-success btn-outline font-normal">
                 GitHub
               </a>
             </div>
@@ -34,13 +36,13 @@
 
       <div class="mt-6 sm:mt-8 lg:mt-12 text-left sm:text-center group">
         <a href="https://github.com/upinder-sangha?tab=repositories" target="_blank"
-          class="inline-flex items-center gap-3 text-info text-xl md:text-2xl font-medium transition-transform duration-300 hover:scale-[1.03]">
+          class="inline-flex items-center gap-3 text-info-content text-xl md:text-2xl font-medium transition-transform duration-300 hover:scale-[1.05]">
           <img :src="`/icons/github_creative.svg`" alt="GitHub"
             class="w-10 h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-          <span class="font-light hover:underline hover:underline-offset-4 decoration-info/40 hover:decoration-info">
+          <span class="font-light">
             More Projects
           </span>
-          <svg class="w-5 h-5 text-info transition-transform duration-300 group-hover:translate-x-1" fill="none"
+          <svg class="w-5 h-5 text-info-content transition-transform duration-300 group-hover:translate-x-1" fill="none"
             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

@@ -4,8 +4,8 @@
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
 
       <!-- Right: Image & Social Icons -->
-      <div class="lg:w-1/3 flex flex-col items-center gap-2 sm:gap-4">
-        <div class="w-48 h-48 sm:w-56 sm:h-56 xl:w-full xl:h-full rounded-full overflow-hidden shadow-lg">
+      <div class="lg:w-1/3 flex flex-col items-center ">
+        <div class="w-48 h-48 sm:w-56 sm:h-56 xl:w-full xl:h-full mask mask-hexagon-2 overflow-hidden shadow-lg">
           <img loading="lazy" :src="'/images/upinder.png'" alt="Upinder Singh Sangha" class="w-full h-full object-cover" />
         </div>
 
@@ -38,26 +38,26 @@
       <!-- Left: Text & Code Block -->
       <div class="sm:w-[90VW] xl:w-2/3 max-w-3xl">
         <div class="text-center xl:text-left md:space-y-4 pb-4 md:pb-8">
-          <p class="font-urbanist text-md md:text-lg md:text-xl font-extrabold">👋 Hi, I'm</p>
-          <h1 class="font-urbanist text-4xl sm:text-5xl xl:text-7xl font-extrabold">Upinder Sangha</h1>
-          <p class="hidden sm:inline-block text-lg">
+          <p class="font-urbanist text-md md:text-lg md:text-xl font-extrabold text-success-content">👋 Hi, I'm</p>
+          <h1 class="font-urbanist text-4xl sm:text-5xl xl:text-7xl font-extrabold text-accent-content">Upinder Sangha</h1>
+          <p class="hidden sm:inline-block text-lg text-info-content">
             Developer | Analyst | Learner
           </p>
-          <p class="sm:hidden text-lg">
+          <p class="sm:hidden text-lg text-accent-content">
             <span id="role-text" class="inline-block"></span>
           </p>
         </div>
 
         <div
           class="sm:hidden text-center xl:text-left bg-gradient-to-t from-transparent via-base-100 to-transparent">
-          <div class="text-info bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
-            <p class="font-caveat font-semibold text-2xl px-4">
+          <div class="bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
+            <p class="text-info-content font-caveat font-semibold text-2xl px-4">
               I make lives easier through code.
             </p>
           </div>
 
           <div
-            class="text-sm text-base-content/70 bg-gradient-to-t from-transparent via-base-100 to-transparent ">
+            class="text-sm text-accent-content bg-gradient-to-t from-transparent via-base-100 to-transparent ">
             <p class="px-4">
               I build clean, efficient, and user-focused software,
               and automate the boring stuff (often the slightly interesting too).

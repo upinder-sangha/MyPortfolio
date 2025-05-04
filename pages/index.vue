@@ -25,14 +25,10 @@
       <Certificates />
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact + Footer Section -->
     <section class="snap-align-none">
       <Contact />
     </section>
 
-    <!-- Footer Section -->
-    <section class="snap-align-none">
-      <Footer />
-    </section>
   </div>
 </template>

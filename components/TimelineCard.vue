@@ -9,7 +9,7 @@
       <div class="flex justify-end items-center max-md:gap-2 gap-4 text-right">
         <div class="flex flex-col">
           <span class="font-light max-sm:text-xs leading-tight text-sm text-base-content/70">{{ data.year }}</span>
-          <div class="text-base-content max-sm:text-xs text-lg  leading-tight break-words whitespace-normal">
+          <div class="text-success-content max-sm:text-xs text-lg leading-tight break-words whitespace-normal">
             {{ data.title }}
           </div>
           <div class="font-light flex flex-wrap flex-row-reverse gap-1 max-sm:text-xs text-sm text-base-content/70
@@ -32,7 +32,7 @@
       <div
         :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
         <ul class="flex flex-wrap flex-row-reverse gap-2 px-4 pt-2 pr-20">
-          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
+          <li v-for="(item, index) in data.tags" :key="index" class="py-2 badge bg-base-300/50 badge-sm">{{ item }}</li>
         </ul>
         <p class="font-light text-base-content/70 max-sm:text-xs sm:pr-20 text-sm p-2 pl-4 text-justify pb-8">{{ data.details }}</p>
       </div>
@@ -56,7 +56,7 @@
           class="w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-full bg-transparent" />
         <div class="flex flex-col">
           <span class="font-light max-sm:text-xs leading-tight text-sm text-base-content/70">{{ data.year }}</span>
-          <div class="text-base-content max-sm:text-xs text-lg leading-tight break-words whitespace-normal">
+          <div class="text-info-content max-sm:text-xs text-lg leading-tight break-words whitespace-normal">
             {{ data.title }}
           </div>
 
@@ -77,7 +77,7 @@
       <div
         :class="['overflow-hidden transition-max-height duration-300 ease-in-out', isExpanded ? 'max-h-[500px]' : 'max-h-0']">
         <ul class="flex flex-wrap gap-2 px-2 pt-2 sm:pl-20">
-          <li v-for="(item, index) in data.tags" :key="index" class="badge bg-base-300/50 badge-sm">{{ item }}</li>
+          <li v-for="(item, index) in data.tags" :key="index" class="py-2 badge bg-base-300/50 badge-sm">{{ item }}</li>
         </ul>
         <p class="font-light text-base-content/70 max-sm:text-xs sm:pl-20 text-sm p-2 pr-4 text-justify pb-8">{{ data.details }}</p>
       </div>

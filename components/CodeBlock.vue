@@ -10,11 +10,11 @@
         class="text-base-content/50"><code>Perpetually learning, breaking things, and turning ideas into experiments.</code><code class="text-base-content/30"> */</code></pre>
       <pre data-prefix="" class="text-base-content/50"><code></code></pre>
       <pre data-prefix=">"
-        class="text-base-content/50"><code class="text-success">function</code><code class="text-info"> showSomethingCool() </code><code class="text-success">{</code></pre>
+        class="text-base-content/50"><code class="text-success-content">function</code><code class="text-info-content"> showSomethingCool() </code><code class="text-success-content">{</code></pre>
       <pre data-prefix=">"
-        class="text-base-content/50"><code class="text-info">  action.go(</code><code class="text-base-content">"Reload the website! Just do it! Seriously."</code><code class="text-info">)</code><code class="text-base-content">;</code></pre>
-      <pre data-prefix=">" class="text-base-content/50"><code class="text-success">}</code></pre>
-      <pre data-prefix="" class="text-base-content/50"><code class="text-success"></code></pre>
+        class="text-base-content/50"><code class="text-info-content">  action.go(</code><code class="text-base-content">"Reload the website! Just do it! Seriously."</code><code class="text-info-content">)</code><code class="text-base-content">;</code></pre>
+      <pre data-prefix=">" class="text-base-content/50"><code class="text-success-content">}</code></pre>
+      <pre data-prefix="" class="text-base-content/50"><code class="text-success-content"></code></pre>
     <pre data-prefix="/*"
       class="text-base-content/50"><code id="typing-text"></code><code id="second-typing-text"></code><code class="text-base-content/30"> */</code></pre>
   </div>

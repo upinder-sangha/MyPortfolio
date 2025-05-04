@@ -1,5 +1,5 @@
 <template>
-  <div class=" -z-1 relative overflow-hidden">
+  <div class="-z-1 relative overflow-hidden">
     <!-- Floating Shapes -->
     <template v-for="(shape, index) in total_shapes" :key="'shape-' + index">
       <svg :class="[randomAnimationClass(), randomSizeClass()]" xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +71,8 @@ const getShapePath = (index) => ({
 });
 
 const custom_styles = [
-  'stroke-neutral/50', 'stroke-primary/50', 'stroke-secondary/50', 'stroke-accent/50',
-  'stroke-info/50', 'stroke-success/50', 'stroke-warning/50', 'stroke-error/50'
+  'stroke-success/50', 'stroke-info/50', 'stroke-secondary/50', 'stroke-accent-content/50',
+  'stroke-info-content/50', 'stroke-success-content/50', 'stroke-error/50'
 ];
 
 const animation_classes = ['animate-float1', 'animate-float2', 'animate-float3'];
