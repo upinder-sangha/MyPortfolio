@@ -44,7 +44,7 @@
   }
 
   .animated-gradient-border {
-    @apply p-[5px] rounded-xl bg-[linear-gradient(90deg,theme(colors.success),theme(colors.info))] bg-[length:200%_200%];
+    @apply p-[3px] md:p-[5px] rounded-xl bg-[linear-gradient(90deg,theme(colors.success),theme(colors.info))] bg-[length:200%_200%];
     animation: shimmer 2s linear infinite;
   }
 

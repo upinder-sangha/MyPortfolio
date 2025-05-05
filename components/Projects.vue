@@ -4,9 +4,9 @@
       What I’ve Built</h2>
     <div class="max-w-[88rem] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 justify-items-center place-content-center">
-        <div v-for="repo in repos" :key="repo.id"
-          class="bg-base-100 text-base-content flex flex-col sm:flex-row rounded-xl overflow-hidden  hover:shadow-md transition-transform duration-300 hover:scale-[1.01] w-full max-w-xl md:max-w-2xl">
+        <div v-for="repo in repos" :key="repo.id" class="animated-gradient-border-hover hover:shadow-md transition-transform duration-300 hover:scale-[1.01]">
           <!-- Image -->
+           <div class="bg-base-100 text-base-content flex flex-col sm:flex-row rounded-lg overflow-hidden w-full max-w-xl md:max-w-2xl">
           <div class="sm:w-5/12 w-full h-48 sm:h-auto overflow-hidden flex-shrink-0 p-3 sm:p-2 bg-base-100">
             <img loading="lazy" :src="projectImages[repo.name] || '/images/placeholder.png'" :alt="repo.name"
               class="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-md " />
@@ -31,6 +31,7 @@
             </div>
 
           </div>
+        </div>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 <template>
   <section id="certificates" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/60 backdrop-blur-2xl">
-    <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center md:mb-10">What
+    <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-10">What
       I’ve Earned</h2>
 
     <!-- Carousel Container -->
@@ -16,8 +16,10 @@
               '-translate-x-full': index === prevIndex,
               'hidden': index !== currentIndex && index !== nextIndex && index !== prevIndex
             }">
+            <div class="absolute top-1/2 sm:left-1/2  sm:-translate-x-1/2 transform -translate-y-1/2">
             <img loading="lazy" :src="certificate.image_path" :alt="certificate.title"
-              class="w-full h-full object-contain cursor-pointer" @click="openModal(certificate)" />
+              class="animated-gradient-border overflow-hidden w-full h-auto object-contain cursor-pointer" @click="openModal(certificate)" />
+            </div>
           </div>
         </div>
 
@@ -34,10 +36,10 @@
       </div>
 
       <!-- Navigation Buttons -->
-      <button class="btn btn-circle absolute top-1/2 left-4 transform -translate-y-1/2 z-20" @click="prevSlide">
+      <button class="btn max-sm:btn-sm btn-circle absolute top-1/2 left-4 transform -translate-y-1/2 z-20" @click="prevSlide">
         ❮
       </button>
-      <button class="btn btn-circle absolute top-1/2 right-4 transform -translate-y-1/2 z-20" @click="nextSlide">
+      <button class="btn max-sm:btn-sm btn-circle absolute top-1/2 right-4 transform -translate-y-1/2 z-20" @click="nextSlide">
         ❯
       </button>
 
