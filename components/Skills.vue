@@ -7,7 +7,7 @@
         <!-- Loop through skill categories -->
         <div v-for="(category, index) in listOfSkillCategories" :key="index"
           class="animated-gradient-border-hover card transition-transform hover:scale-[1.01] w-full max-w-xl md:max-w-2xl">
-          <div class="bg-base-200 rounded-lg card-body flex flex-col items-center p-2 py-4">
+          <div class="bg-base-300 rounded-lg card-body flex flex-col items-center p-2 py-4">
             <!-- Center the category name -->
             <h3 class="text-success-content card-title font-normal text-xl md:text-2xl lg:text-3xl mb-4 text-center">{{
               category.category }}</h3>
@@ -28,5 +28,5 @@
 </template>
 
 <script setup>
-import listOfSkillCategories from '~/assets/skills.json';  // Import your JSON file containing skill categories
+import listOfSkillCategories from '~/assets/skills.json';  // Import JSON file containing skill categories
 </script>

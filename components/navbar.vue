@@ -3,10 +3,10 @@
     <nav class="px-4 font-raleway">
       <div class="flex justify-between items-center h-14">
         <!-- Logo / Name -->
-        <NuxtLink to="/"
+        <a href="#" @click.prevent="scrollToAbout"
           class="font-urbanist text-lg sm:text-xl tracking-wide hover:opacity-70 transition-opacity text-accent-content">
           Upinder Singh Sangha
-        </NuxtLink>
+      </a>
 
         <!-- Desktop Nav -->
         <div class="hidden md:flex space-x-6 px-4">

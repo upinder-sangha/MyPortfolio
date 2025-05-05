@@ -13,8 +13,8 @@
           </svg>
         </div>
         <div role="button" :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
-          class="animated-gradient-border-hover">
-          <div class="glass-effect timeline-box">
+          class="animated-gradient-border-hover p-0">
+          <div class="glass-effect bg-base-100/70 timeline-box">
           <TimelineCard class=""
             :data="data"
             :direction="isSmallScreen ? 'right' : (data.type == 'experience' ? 'right' : 'left')" 
@@ -54,6 +54,6 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .glass-effect {
-  @apply rounded-md bg-base-100 border border-transparent shadow-none hover:shadow-md;
+  @apply rounded-md border border-transparent shadow-none hover:shadow-md;
 }
 </style>

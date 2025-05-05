@@ -27,7 +27,7 @@
             class="h-full w-1/3 absolute transition-all duration-500 ease-in-out flex items-center"
             :class="desktopSlideClasses(index)">
             <img loading="lazy" :src="certificate.image_path" :alt="certificate.title"
-              class="w-full h-full object-contain cursor-pointer" @click="openModal(certificate)" />
+              class="animated-gradient-border overflow-hidden w-full h-auto object-contain cursor-pointer" @click="openModal(certificate)" />
           </div>
         </div>
 

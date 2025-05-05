@@ -16,7 +16,7 @@ useHead({
     { name: 'twitter:card', content: 'summary_large_image' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://yourdomain.com/' },
+    { rel: 'canonical', href: 'https://upindersangha.com/' },
     {
       rel: 'preconnect',
       href: 'https://fonts.googleapis.com',
@@ -54,7 +54,7 @@ useHead({
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Upinder Singh Sangha",
-        "url": "https://yourdomain.com",
+        "url": "https://upindersangha.com",
         "sameAs": [
           "https://www.linkedin.com/in/upinder-sangha",
           "https://github.com/upinder-sangha"

@@ -50,7 +50,6 @@ const closeModal = () => {
 </script>
 
 <style lang="postcss" scoped>
-/* Keep your custom styles if necessary */
 .glass-effect {
   @apply backdrop-blur-xl bg-base-100 border border-base-content/10;
 }
