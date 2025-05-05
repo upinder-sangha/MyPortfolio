@@ -1,5 +1,5 @@
 <template>
-  <section id="certificates" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/70 backdrop-blur-2xl">
+  <section id="certificates" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/60 backdrop-blur-2xl">
     <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center md:mb-10">What
       I’ve Earned</h2>
 

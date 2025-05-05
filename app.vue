@@ -12,7 +12,7 @@ useHead({
     { name: 'keywords', content: 'Upinder, Portfolio, Software Developer, Full-Stack, AI, Projects, Resume, Upinder Singh Sangha, Upinder Singh, Upinder Sangha , Data Analyst, Cloud, Machine Learning' },
     { property: 'og:title', content: 'Upinder Singh Sangha | Portfolio' },
     { property: 'og:description', content: 'Explore my projects, skills, and experience.' },
-    { property: 'og:image', content: '/images/upinder.png' }, // Create a preview image
+    { property: 'og:image', content: '/images/Preview.png' }, // Create a preview image
     { name: 'twitter:card', content: 'summary_large_image' },
   ],
   link: [

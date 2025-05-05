@@ -1,6 +1,6 @@
 <template>
   <section id="about" class="h-0"></section>
-  <section class="fixed pointer-events-none inset-0 pt-24 xl:pt-28 h-svh md:px-20 max-w-[96rem] mx-auto">
+  <section class="flex flex-col h-screen xl:h-auto justify-between fixed inset-0 overflow-y-auto pb-8 pt-24 xl:pt-28 h-svh md:px-20 max-w-[96rem] mx-auto z-0">
     <div
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
 
@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <div class="mt-8 flex justify-center transform -translate-x-1/2 animate-bounce">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-base-content/50 rotate-180" fill="none" viewBox="0 0 24 24"
         stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />

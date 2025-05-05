@@ -1,7 +1,7 @@
 <template>
   <section id="contact" class="min-h-svh flex flex-col justify-between">
     <section
-      class="py-12 md:py-20 p-6 md:p-10 bg-base-300/70 backdrop-blur-2xl grow flex flex-col justify-evenly items-center">
+      class="py-12 md:py-20 p-6 md:p-10 bg-base-300/60 backdrop-blur-2xl grow flex flex-col justify-evenly items-center">
       <h2
         class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center">
         Let’s Connect</h2>

@@ -1,34 +1,17 @@
 <template>
-<div class="h-screen overflow-y-scroll snap-y snap-proximity scroll-smooth">
-  <!-- About Section -->
-    <section class="snap-start">
-      <About />
-    </section>
+  <div class="relative">
+    <!-- About Section -->
+    <About />
 
-    <!-- Experience/Education Section -->
-    <section class="snap-start scroll-mt-10">
-      <Timeline />
-    </section>
-
-    <!-- Skills Section -->
-    <section class="snap-align-none">
-      <Skills />
-    </section>
-
-    <!-- Projects Section -->
-    <section class="snap-align-none">
-      <Projects />
-    </section>
-
-    <!-- Certificates Section -->
-    <section class="snap-align-none">
-      <Certificates />
-    </section>
-
-    <!-- Contact + Footer Section -->
-    <section class="snap-align-none">
-      <Contact />
-    </section>
-
+    <!-- Other Sections -->
+    <div class="relative z-10" style="margin-top: 100vh; pointer-events: none;">
+      <div style="pointer-events: auto;">
+        <Timeline />
+        <Skills />
+        <Projects />
+        <Certificates />
+        <Contact />
+      </div>
+    </div>
   </div>
 </template>

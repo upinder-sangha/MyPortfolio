@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="py-12 md:py-20 p-6 md:p-8 bg-base-300/70 backdrop-blur-2xl">
+  <section id="projects" class="py-12 md:py-20 p-6 md:p-8 bg-base-300/60 backdrop-blur-2xl">
     <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">
       What I’ve Built</h2>
     <div class="max-w-[88rem] mx-auto">
@@ -73,7 +73,7 @@ const projectImages = {
   'Hybrid-Stock-Price-Prediction-model-uisng-LSTM': '/images/Hybrid-Stock-Price-Prediction-model-uisng-LSTM.png',
   'Image-Classification-of-Plant-Diseases-Using-CNN': '/images/Image-Classification-of-Plant-Diseases-Using-CNN.png',
   'Fake-News-Detector-Bot': '/images/Fake-News-Detector-Bot.png',
-  Portfolio: '/images/portfolio.png',
+  'MyPortfolio': '/images/MyPortfolio.png',
   placeholder: '/images/placeholder.png'
 }
 </script>

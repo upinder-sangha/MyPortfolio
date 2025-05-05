@@ -1,5 +1,5 @@
 <template>
-  <section id="skills" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/70 backdrop-blur-2xl">
+  <section id="skills" class="py-12 md:py-20 p-6 md:p-8 bg-base-100/60 backdrop-blur-2xl">
     <h2 class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center mb-12 md:mb-20">My Areas of Expertise</h2>
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto justify-items-center place-content-center">
