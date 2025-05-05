@@ -14,9 +14,17 @@ useHead({
     { property: 'og:description', content: 'Explore my projects, skills, and experience.' },
     { property: 'og:image', content: '/images/Preview.png' }, // Create a preview image
     { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'apple-mobile-web-app-title', content: 'MyWebSite' },
   ],
   link: [
     { rel: 'canonical', href: 'https://upindersangha.com/' },
+    // 🖼️ Favicons and Web Manifest
+    { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' },
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    { rel: 'shortcut icon', href: '/favicon.ico' },
+    { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+    { rel: 'manifest', href: '/site.webmanifest' },
+
     {
       rel: 'preconnect',
       href: 'https://fonts.googleapis.com',
