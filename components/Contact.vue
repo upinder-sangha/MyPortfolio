@@ -1,7 +1,7 @@
 <template>
   <section id="contact" class="min-h-svh flex flex-col justify-between">
     <section
-      class="py-12 md:py-20 p-4 md:p-8 bg-base-200/50 backdrop-blur-sm grow flex flex-col justify-evenly items-center">
+      class="py-12 md:py-20 p-6 md:p-10 bg-base-300/70 backdrop-blur-2xl grow flex flex-col justify-evenly items-center">
       <h2
         class="text-accent-content font-light text-3xl sm:text-4xl lg:text-5xl font-raleway text-center">
         Let’s Connect</h2>
@@ -10,7 +10,7 @@
         <form @submit.prevent="handleSubmit" class="grid grid-cols-1 gap-2">
           <span class="label-text ml-2 text-success-content">Name</span>
           <div class="form-control">
-            <label class="input input-bordered rounded-xl flex items-center gap-2">
+            <label class="bg-secondary input rounded-xl flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                 class="h-4 w-4 opacity-70">
                 <path
@@ -21,7 +21,7 @@
           </div>
           <span class="label-text ml-2 text-success-content">Email</span>
           <div class="form-control">
-            <label class="input input-bordered rounded-xl flex items-center gap-2">
+            <label class="bg-secondary input rounded-xl flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                 class="h-4 w-4 opacity-70">
                 <path
@@ -34,7 +34,7 @@
           </div>
           <span class="label-text ml-2 text-success-content">Message</span>
           <div class="form-control">
-            <textarea class="textarea textarea-bordered rounded-xl" name="message" v-model="form.message"
+            <textarea class="bg-secondary textarea rounded-xl" name="message" v-model="form.message"
               placeholder="Your Message" required></textarea>
           </div>
           <div class="form-control">
@@ -45,7 +45,7 @@
         </form>
       </div>
     </section>
-    <Footer></Footer>
+    <Footer class="z-10"></Footer>
   </section>
 </template>
 

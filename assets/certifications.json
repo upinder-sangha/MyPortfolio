@@ -7,36 +7,42 @@
     },
     {
       "id": 2,
+      "title": "AWS Certified Cloud Practitioner",
+      "image_path": "/certificates/AWS Cloud Practitioner.png",
+      "link": "https://cp.certmetrics.com/amazon/en/public/verify/credential/63a724cd73b74fd98fe1449a032652a3"
+    },
+    {
+      "id": 3,
       "title": "Coursera machine learning",
       "image_path": "/certificates/Coursera machine learning.jpg",
       "link": "https://www.coursera.org/account/accomplishments/verify/JH5BPBPBUF26"
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "Coursera Neural Networks and Deep Learning",
       "image_path": "/certificates/Coursera Neural Networks and Deep Learning.jpg",
       "link": "https://www.coursera.org/account/accomplishments/verify/5GD3LUCNKTHY"
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "udemy web developemen certificate",
       "image_path": "/certificates/udemy web developemen certificate.jpg",
       "link": "https://www.udemy.com/certificate/UC-c628454a-0422-4243-a76c-cd1dabaa1bd6/"
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "React Udemy",
       "image_path": "/certificates/React Udemy.jpg",
       "link": "https://www.udemy.com/certificate/UC-6796666f-8a43-4cae-9cab-3d29ca1a750f/"
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "udemy machine learning",
       "image_path": "/certificates/udemy machine learning.jpg",
       "link": "https://www.udemy.com/certificate/UC-3e72845c-7b7e-4058-b436-766c851c0c01/"
     },
     {
-      "id": 7,
+      "id": 8,
       "title": "Sparks Foundation Internship",
       "image_path": "/certificates/Sparks Foundation Internship.png",
       "link": "https://truecertificates.com/verification/"

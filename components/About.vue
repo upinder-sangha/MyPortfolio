@@ -1,5 +1,6 @@
 <template>
-  <section id="about" class="relative pt-24 xl:pt-28 min-h-svh md:px-20 max-w-[96rem] mx-auto">
+  <section id="about" class="h-0"></section>
+  <section class="fixed pointer-events-none inset-0 pt-24 xl:pt-28 h-svh md:px-20 max-w-[96rem] mx-auto">
     <div
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
 
@@ -10,7 +11,7 @@
         </div>
 
         <!-- Social Icons under image -->
-        <div class="flex justify-center gap-3 md:gap-4 items-center">
+        <div class="flex justify-center gap-3 md:gap-4 items-center pointer-events-auto">
           <a href="https://www.linkedin.com/in/upinder-sangha" target="_blank"
             class="hover:scale-110 transition-transform">
             <img :src="'/icons/linkedin.svg'" alt="LinkedIn" class="w-6 h-6 md:w-8 md:h-8 xl:w-10 xl:h-10" />
@@ -38,19 +39,19 @@
       <!-- Left: Text & Code Block -->
       <div class="sm:w-[90VW] xl:w-2/3 max-w-3xl">
         <div class="text-center xl:text-left md:space-y-4 pb-4 md:pb-8">
-          <p class="font-urbanist text-md md:text-lg md:text-xl font-extrabold text-success-content">👋 Hi, I'm</p>
+          <p class="font-urbanist text-md md:text-lg md:text-xl font-extrabold text-success-content/80">👋 Hi, I'm</p>
           <h1 class="font-urbanist text-4xl sm:text-5xl xl:text-7xl font-extrabold text-accent-content">Upinder Sangha</h1>
           <p class="hidden sm:inline-block text-lg text-info-content">
             Developer | Analyst | Learner
           </p>
-          <p class="sm:hidden text-lg text-accent-content">
+          <p class="sm:hidden text-lg text-info-content">
             <span id="role-text" class="inline-block"></span>
           </p>
         </div>
 
         <div
           class="sm:hidden text-center xl:text-left bg-gradient-to-t from-transparent via-base-100 to-transparent">
-          <div class="bg-gradient-to-t from-transparent via-base-100 to-transparent py-4">
+          <div class="bg-gradient-to-t from-transparent via-base-100 to-transparent py-6">
             <p class="text-info-content font-caveat font-semibold text-2xl px-4">
               I make lives easier through code.
             </p>
@@ -70,7 +71,7 @@
       </div>
     </div>
     <div class="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-base-content/50" fill="none" viewBox="0 0 24 24"
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-base-content/50 rotate-180" fill="none" viewBox="0 0 24 24"
         stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
       </svg>

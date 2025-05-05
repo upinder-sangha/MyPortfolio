@@ -1,5 +1,5 @@
 <template>
-  <footer class="glass-effect footer p-10 text-base-content">
+  <footer class="bg-neutral/70 backdrop-blur-2xl footer p-4 md:p-10 text-base-content">
     <div class="w-full mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
       <!-- Social Links -->
       <div class="flex flex-col items-center md:items-start gap-4">
@@ -56,7 +56,4 @@
 </script>
 
 <style lang="postcss" scoped>
-.glass-effect {
-  @apply backdrop-blur-lg bg-base-300;
-}
 </style>

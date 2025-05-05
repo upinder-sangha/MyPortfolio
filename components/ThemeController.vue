@@ -1,8 +1,13 @@
+
+
+
 <template>
   <label class="swap swap-rotate">
-    <!-- this hidden checkbox controls the state -->
-    <input type="checkbox" class="theme-controller" value="dark" />
-
+    <input
+      type="checkbox"
+      class="theme-controller"
+      v-model="isDark"
+    />
     <svg class="size-8 swap-off text-accent-content" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
       stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round"
@@ -13,9 +18,32 @@
       <path stroke-linecap="round" stroke-linejoin="round"
         d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
     </svg>
-
   </label>
 </template>
 
-
-<style></style>
+<script>
+export default {
+  data() {
+    return {
+      isDark: false
+    }
+  },
+  mounted() {
+    // Detect system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    this.isDark = prefersDark
+    this.setTheme(prefersDark ? 'dark' : 'light')
+  },
+  methods: {
+    setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme)
+      localStorage.setItem('theme', theme)
+    }
+  },
+  watch: {
+    isDark(val) {
+      this.setTheme(val ? 'dark' : 'light')
+    }
+  }
+}
+</script>

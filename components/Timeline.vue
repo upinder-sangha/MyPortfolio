@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="bg-base-200/50 backdrop-blur-sm py-12 md:py-20 md:px-4 px-2 pr-4">
+  <section id="experience" class="mt-[100svh] bg-base-300/70 backdrop-blur-2xl py-12 md:py-20 md:px-4 px-2 pr-4">
     <h2 class="font-raleway font-light text-3xl sm:text-4xl lg:text-5xl text-center mb-12 md:mb-20 text-accent-content">My Milestones</h2>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
       <!-- Loop through experiences, showing only the first 4 if 'showAll' is false -->
@@ -52,6 +52,6 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .glass-effect {
-  @apply rounded-md bg-base-100 border border-transparent !shadow-none hover:shadow;
+  @apply rounded-md bg-base-100 border border-transparent shadow-none hover:shadow-md;
 }
 </style>
