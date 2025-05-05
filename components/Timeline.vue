@@ -13,11 +13,13 @@
           </svg>
         </div>
         <div role="button" :class="data.type == 'experience' ? 'timeline-end' : 'timeline-start'"
-          class="glass-effect timeline-box">
-          <TimelineCard
+          class="animated-gradient-border-hover">
+          <div class="glass-effect timeline-box">
+          <TimelineCard class=""
             :data="data"
             :direction="isSmallScreen ? 'right' : (data.type == 'experience' ? 'right' : 'left')" 
           />
+        </div>
         </div>
         <hr class="!w-[2px] bg-accent-content"/>
       </li>

@@ -16,3 +16,35 @@
     animation: scroll 30s linear infinite;
   }
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+@layer components {
+  .gradient-border {
+    @apply p-[1px] rounded-lg bg-[linear-gradient(to_right,theme(colors.info-content),theme(colors.success-content))];
+  }
+
+  .gradient-border-inner {
+    @apply rounded-lg;
+  }
+
+  .gradient-border-hover {
+    @apply p-[1px] rounded-lg bg-transparent transition-all duration-300 ease-in-out hover:bg-[linear-gradient(to_right,theme(colors.info-content),theme(colors.success-content))];
+  }
+
+  .animated-gradient-border-hover {
+    @apply p-[1.5px] rounded-lg hover:bg-[linear-gradient(90deg,theme(colors.success),theme(colors.info))] bg-[length:200%_200%];
+    animation: shimmer 2s linear infinite;
+  }
+}

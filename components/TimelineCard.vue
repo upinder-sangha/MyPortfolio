@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['hover:scale-[1.02] transition-transform relative flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-w-lg']"
+    :class="['bg-base-100 rounded-lg hover:scale-[1.02] transition-transform relative flex flex-col p-2 max-sm:py-1 max-sm:px-2 pr-4 max-w-lg']"
     @click="toggleExpand"
   >
     <!-- Left-aligned Card -->

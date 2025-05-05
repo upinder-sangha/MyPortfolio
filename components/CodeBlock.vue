@@ -1,5 +1,6 @@
 <template>
-  <div class="mockup-code bg-base-200 md:p-4 text-xs md:text-sm">
+  <div class="animated-gradient-border-hover rounded-xl">
+  <div class="rounded-xl mockup-code bg-base-200 md:p-4 text-xs md:text-sm pointer-events-none">
       <pre data-prefix="$"
         class="text-base-content/50"><code class="text-base-content">I make lives easier through code.</code></pre>
       <pre data-prefix="/*"
@@ -18,6 +19,7 @@
     <pre data-prefix="/*"
       class="text-base-content/50"><code id="typing-text"></code><code id="second-typing-text"></code><code class="text-base-content/30"> */</code></pre>
   </div>
+</div>
 </template>
 
 

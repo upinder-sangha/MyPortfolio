@@ -10,7 +10,7 @@
 
         <!-- Desktop Nav -->
         <div class="hidden md:flex space-x-6 px-4">
-          <NuxtLink to="#about" class="nav-link">About</NuxtLink>
+          <a href="#" @click.prevent="scrollToAbout" class="nav-link">About</a>
           <NuxtLink to="#experience" class="nav-link">Experience</NuxtLink>
           <NuxtLink to="#skills" class="nav-link">Skills</NuxtLink>
           <NuxtLink to="#projects" class="nav-link">Projects</NuxtLink>
@@ -35,7 +35,7 @@
       <!-- Mobile Nav -->
       <transition name="mobile-menu" @before-enter="onBeforeEnter" @after-leave="onAfterLeave">
         <div v-show="menuOpen" class="min-h-screen md:hidden pt-6 space-y-12 pb-6 text-center border-b border-accent-content">
-          <NuxtLink to="#about" @click="toggleMenu" class="block nav-link">About</NuxtLink>
+          <a href="#" @click.prevent="scrollToAbout" class="nav-link">About</a>
           <NuxtLink to="#experience" @click="toggleMenu" class="block nav-link">Experience</NuxtLink>
           <NuxtLink to="#skills" @click="toggleMenu" class="block nav-link">Skills</NuxtLink>
           <NuxtLink to="#projects" @click="toggleMenu" class="block nav-link">Projects</NuxtLink>
@@ -62,6 +62,14 @@ const toggleMenu = () => {
     menuOpen.value = true
   }
 }
+
+const scrollToAbout = () => {
+  // Force scroll to top (where fixed About section is visible)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  // Optional: Add URL hash without triggering default scroll
+  history.replaceState(null, null, '#about');
+};
 </script>
 
 <style lang="postcss" scoped>

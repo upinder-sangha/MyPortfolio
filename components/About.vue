@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="h-0"></section>
+  <section id="about" class="absolute top-0 h-0"></section>
   <section class="flex flex-col h-screen xl:h-auto justify-between fixed inset-0 overflow-y-auto pb-8 pt-24 xl:pt-28 h-svh md:px-20 max-w-[96rem] mx-auto z-0">
     <div
       class="xl:min-h-[70vh] flex flex-col xl:items-center xl:flex-row-reverse max-xl:items-center justify-between gap-8 md:gap-12">
