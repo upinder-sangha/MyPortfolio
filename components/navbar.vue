@@ -69,6 +69,7 @@ const scrollToAbout = () => {
   
   // Optional: Add URL hash without triggering default scroll
   history.replaceState(null, null, '#about');
+  toggleMenu();
 };
 </script>
 
