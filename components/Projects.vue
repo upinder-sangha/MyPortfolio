@@ -26,7 +26,7 @@
             <div class="mt-4 text-right">
               <a :href="repo.html_url" target="_blank"
                 class="rounded-md border-success-content/50 !text-success-content btn btn-sm btn-success btn-outline font-normal">
-                GitHub
+                View
               </a>
             </div>
 
