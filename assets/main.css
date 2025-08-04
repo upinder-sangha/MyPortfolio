@@ -1,7 +1,11 @@
+/* assets/main.css */
+@import './animations.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+/* Add any additional global styles here */
 @layer utilities {
   @keyframes scroll {
     0% {
