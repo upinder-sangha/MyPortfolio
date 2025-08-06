@@ -24,20 +24,23 @@
             {{ link.name }}
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
           </a>
-          
-          <!-- Special User Guide Link -->
-          <NuxtLink to="/docative/user-guide" 
-                    class="relative px-4 py-2 font-medium transition-all duration-300 group ml-2">
-            <span class="relative z-10 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              User Guide
-            </span>
-            <span class="absolute inset-0 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
-            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500"></span>
-          </NuxtLink>
         </div>
         
-        <!-- CTA Button with gradient and animation -->
-        <div class="hidden md:block">
+        <!-- Right side buttons -->
+        <div class="hidden md:flex items-center space-x-3">
+          <!-- User Guide Button - Standout styling -->
+          <NuxtLink to="/docative/user-guide" 
+                    class="relative px-4 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 text-white font-medium rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <span class="relative z-10 flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              User Guide
+            </span>
+            <span class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 transition-opacity duration-300 hover:opacity-100"></span>
+          </NuxtLink>
+          
+          <!-- CTA Button with gradient and animation -->
           <a href="#get-started" 
              class="relative px-6 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
             <span class="relative z-10">Get Started</span>
@@ -47,7 +50,7 @@
         
         <!-- Mobile menu button -->
         <div class="md:hidden">
-          <button @click="mobileMenuOpen = !mobileMenuOpen" 
+          <button @click="toggleMobileMenu" 
                   class="text-gray-700 hover:text-indigo-600 focus:outline-none p-2 rounded-lg transition-colors duration-300">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -58,34 +61,44 @@
       </div>
     </div>
     
-    <!-- Mobile menu with glassmorphism -->
-    <div v-if="mobileMenuOpen" 
-         class="md:hidden backdrop-blur-lg bg-white/80 border-t border-gray-200/50 transition-all duration-300">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a v-for="link in navLinks" :key="link.name" 
-           :href="link.href" 
-           class="block px-3 py-2 text-gray-700 hover:text-indigo-600 font-medium rounded-lg hover:bg-indigo-50 transition-all duration-300">
-          {{ link.name }}
-        </a>
-        
-        <!-- Special User Guide Link for mobile -->
-        <NuxtLink to="/docative/user-guide" 
-                  class="block px-3 py-2 font-medium rounded-lg transition-all duration-300 mt-1">
-          <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            User Guide
-          </span>
-        </NuxtLink>
-        
-        <a href="#get-started" 
-           class="block px-3 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg mt-2 text-center">
-          Get Started
-        </a>
+    <!-- Mobile menu with glassmorphism and improved animations -->
+    <transition name="mobile-menu" @before-enter="onBeforeEnter" @after-leave="onAfterLeave">
+      <div v-show="mobileMenuOpen" 
+           class="text-center md:hidden backdrop-blur-xl bg-transparent min-h-screen mt-2 pt-6 pb-6">
+        <div class="px-2 space-y-6 sm:px-3">
+          <a v-for="link in navLinks" :key="link.name" 
+             :href="link.href" 
+             @click="toggleMobileMenu"
+             class="block px-3 py-3 text-lg text-gray-700 hover:text-indigo-600 font-medium rounded-lg hover:bg-indigo-50 transition-all duration-300 nav-link">
+            {{ link.name }}
+          </a>
+          
+          <!-- Special User Guide Link for mobile -->
+          <NuxtLink to="/docative/user-guide" 
+                    @click="toggleMobileMenu"
+                    class="block px-3 py-3.5 bg-gradient-to-r from-amber-400 to-orange-500 text-white font-medium rounded-lg mt-4 text-center text-lg">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              User Guide
+            </span>
+          </NuxtLink>
+          
+          <a href="#get-started" 
+             @click="toggleMobileMenu"
+             class="block px-3 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg mt-2 text-center text-lg">
+            Get Started
+          </a>
+        </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
+
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+
 const mobileMenuOpen = ref(false)
 const scrolled = ref(false)
 const navLinks = [
@@ -95,13 +108,67 @@ const navLinks = [
   { name: 'Pricing', href: '#pricing' },
   { name: 'FAQ', href: '#faq' }
 ]
+
 const handleScroll = () => {
   scrolled.value = window.scrollY > 10
 }
+
+const toggleMobileMenu = () => {
+  // If open, delay close to allow for transition
+  if (mobileMenuOpen.value) {
+    setTimeout(() => {
+      mobileMenuOpen.value = false
+    }, 200) // adjust delay here (ms)
+  } else {
+    mobileMenuOpen.value = true
+  }
+}
+
+const onBeforeEnter = () => {
+  // This function is called before the enter transition starts
+  document.body.style.overflow = 'hidden' // Prevent background scrolling when menu is open
+}
+
+const onAfterLeave = () => {
+  // This function is called after the leave transition ends
+  document.body.style.overflow = '' // Restore scrolling
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
+
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
+
+<style lang="postcss" scoped>
+.nav-link {
+  @apply relative transition-all duration-300;
+}
+.nav-link::after {
+  content: "";
+  @apply absolute left-0 -bottom-0.5 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.mobile-menu-enter-to,
+.mobile-menu-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

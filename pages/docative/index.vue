@@ -1,4 +1,5 @@
-<!-- pages/docative.vue -->
+<!-- pages/docative/index.vue -->
+
 <template>
   <div class="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 overflow-x-hidden">
     <!-- Continuous flowing background elements -->
@@ -7,11 +8,12 @@
       <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
     </div>
+    
     <!-- Navbar -->
     <DocativeNavbar />
     
     <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 md:pt-40 md:pb-32">
+    <section id="home" class="relative">
       <DocativeHero />
     </section>
     
@@ -56,17 +58,9 @@
     </footer>
   </div>
 </template>
-<script setup>
-import { onMounted } from 'vue';
 
-onMounted(() => {
-  const script = document.createElement('script');
-  script.src = 'http://localhost:3000/docative-widget.js';
-  script.async = true;
-  script.setAttribute('data-bot-id', '42d6454c-feb8-4da2-abba-a3fa889d2aa9');
-  script.setAttribute('data-name', 'Docative');
-  document.body.appendChild(script);
-});
+<script setup>
+import { ref, onMounted } from 'vue';
 
 // Import components
 import DocativeNavbar from '~/components/Docative/DocativeNavbar.vue'
@@ -79,6 +73,7 @@ import DocativePricing from '~/components/Docative/DocativePricing.vue'
 import DocativeFAQ from '~/components/Docative/DocativeFAQ.vue'
 import DocativeBottomCTA from '~/components/Docative/DocativeBottomCTA.vue'
 import DocativeFooter from '~/components/Docative/DocativeFooter.vue'
+
 // Set page metadata
 useHead({
   title: 'Docative | Make Your Documents Talk Back',
@@ -89,4 +84,103 @@ useHead({
     { name: 'twitter:card', content: 'summary_large_image' },
   ],
 })
+
+// Demo activation state
+const chatbotLoaded = ref(false);
+
+// Function to load the chatbot script
+function loadChatbotScript() {
+  return new Promise((resolve, reject) => {
+    // Check if script is already loaded
+    if (document.querySelector('script[data-bot-id="00f76502-c22a-4fea-b394-ecedfce1016f"]')) {
+      resolve();
+      return;
+    }
+    
+    // Create and load the script
+    const script = document.createElement('script');
+    script.src = 'http://10.0.0.233:3000/docative-widget.js';
+    script.async = true;
+    script.setAttribute('data-bot-id', '00f76502-c22a-4fea-b394-ecedfce1016f');
+    script.setAttribute('data-name', 'Docative');
+    
+    script.onload = () => {
+      // Wait a bit for the script to initialize and create the button
+      setTimeout(() => {
+        chatbotLoaded.value = true;
+        resolve();
+      }, 500);
+    };
+    
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+// Function to activate the chatbot
+const activateChatbot = async () => {
+  try {
+    // Make sure the chatbot script is loaded
+    if (!chatbotLoaded.value) {
+      await loadChatbotScript();
+    }
+    
+    // Wait for the button to be available
+    let attempts = 0;
+    const maxAttempts = 10;
+    
+    const checkForButton = setInterval(() => {
+      const chatbotButton = document.getElementById('chatbot-toggle-btn');
+      
+      if (chatbotButton) {
+        clearInterval(checkForButton);
+        chatbotButton.click();
+        
+      } else {
+        attempts++;
+        if (attempts >= maxAttempts) {
+          clearInterval(checkForButton);
+        }
+      }
+    }, 200);
+  } catch (error) {
+    console.error('Error activating chatbot:', error);
+    // Show error message
+    alert('There was an error activating the chatbot. Please try again.');
+  }
+};
+
+// Event listener for demo buttons
+onMounted(() => {
+  // Load the chatbot script immediately
+  loadChatbotScript().catch(error => {
+    console.error('Failed to load chatbot script:', error);
+  });
+  
+  // Add event listeners to all demo buttons
+  const demoButtons = document.querySelectorAll('a[href="#demo"]');
+  demoButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      activateChatbot();
+    });
+  });
+});
 </script>
+
+<style scoped>
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out;
+}
+</style>

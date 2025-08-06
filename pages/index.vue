@@ -97,7 +97,7 @@ const shapes = ref([])
 
 onMounted(() => {
   const script = document.createElement('script');
-  script.src = 'http://localhost:3000/docative-widget.js';
+  script.src = 'http://10.0.0.233:3000/docative-widget.js';
   script.async = true;
   script.setAttribute('data-bot-id', '02401979-b302-4f64-9a71-6d488626da61');
   script.setAttribute('data-name', 'Upinder Singh Sangha');

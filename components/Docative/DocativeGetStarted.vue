@@ -1,11 +1,11 @@
 <!-- components/docative/DocativeGetStarted.vue -->
 <template>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <div class="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
     <div class="relative">
       <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-3xl opacity-20"></div>
       <div class="relative bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl shadow-xl p-0">
         <div class="bg-white rounded-3xl p-0 border-2 border-indigo-300">
-          <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 md:p-12">
+          <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl px-4 py-8 md:p-12">
             <div class="text-center mb-10">
               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get Your Docative</h2>
               <p class="text-lg text-gray-700 max-w-2xl mx-auto">
@@ -14,7 +14,8 @@
             </div>
             
             <form @submit.prevent="submitForm" class="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100">
-              <div v-if="!formSubmitted">
+              <!-- Step 1: Form Input -->
+              <div v-if="currentStep === 'form'">
                 <!-- File Upload Area -->
                 <div class="mb-6">
                   <label class="block text-gray-700 font-medium mb-2">Upload Your Document</label>
@@ -98,8 +99,72 @@
                 </div>
               </div>
               
+              <!-- Step 2: OTP Verification -->
+              <div v-else-if="currentStep === 'otp'" class="text-center py-6">
+                <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">One Last Step!</h3>
+                <p class="text-gray-600 mb-6">
+                  We've sent a verification code to <span class="font-semibold">{{ form.email }}</span>. 
+                  Please enter the code below to complete your chatbot creation.
+                </p>
+                
+                <div class="mb-6">
+                  <label for="otp" class="block text-gray-700 font-medium mb-2">Verification Code</label>
+                  <input 
+                    id="otp"
+                    v-model="otpCode"
+                    type="text" 
+                    maxlength="6"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 text-center text-lg tracking-widest"
+                    placeholder="000000"
+                  >
+                  <p v-if="errors.otp" class="mt-1 text-sm text-red-600">{{ errors.otp }}</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+                  <button 
+                    type="button"
+                    @click="verifyOTP"
+                    class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    :disabled="isProcessing || !otpCode.trim()"
+                  >
+                    <span v-if="isVerifying" class="flex items-center justify-center">
+                      <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Verifying...
+                    </span>
+                    <span v-else>Verify & Create Chatbot</span>
+                  </button>
+                  
+                  <button 
+                    type="button"
+                    @click="resendOTP"
+                    class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300"
+                    :disabled="otpResendDisabled"
+                  >
+                    <span v-if="otpResendDisabled">Resend in {{ otpCountdown }}s</span>
+                    <span v-else>Resend Code</span>
+                  </button>
+                </div>
+                
+                <button 
+                  type="button"
+                  @click="goBackToForm"
+                  class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300"
+                >
+                  ← Back to form
+                </button>
+              </div>
+              
               <!-- Success Message -->
-              <div v-else class="text-center py-8">
+              <div v-else-if="currentStep === 'success'" class="text-center py-8">
                 <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -144,6 +209,39 @@
         </div>
       </div>
     </div>
+    
+    <!-- Confirmation Modal -->
+    <div v-if="showConfirmation" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all duration-300 scale-95 animate-scaleIn">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Replace Your Existing Chatbot?</h3>
+          <p class="text-gray-600 mb-6">
+            You already have a Docative chatbot. Creating a new one will replace your existing bot, which will no longer work. Are you sure you want to continue?
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <button 
+              @click="cancelReplace"
+              class="px-5 py-2.5 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300"
+            >
+              Cancel
+            </button>
+            <button 
+              @click="proceedWithUpload"
+              class="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300"
+            >
+              Yes, Replace My Chatbot
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -155,17 +253,24 @@ const form = ref({
   name: '',
   email: ''
 })
-
 const selectedFile = ref(null)
 const dragOver = ref(false)
 const isSubmitting = ref(false)
-const formSubmitted = ref(false)
+const isVerifying = ref(false)
+const isProcessing = ref(false) // Track overall processing state
 const scriptTag = ref('') // Store script tag from API response
 const copied = ref(false) // Track if script tag has been copied
+const showConfirmation = ref(false) // Track if confirmation modal should be shown
+const existingBotId = ref('') // Store existing bot ID
+const currentStep = ref('form') // Track current step: 'form', 'otp', 'success'
+const otpCode = ref('') // Store OTP code entered by user
+const otpResendDisabled = ref(false) // Track if resend button is disabled
+const otpCountdown = ref(60) // Countdown for resend button
 const errors = ref({
   file: '',
   name: '',
-  email: ''
+  email: '',
+  otp: ''
 })
 
 const handleFileDrop = (e) => {
@@ -210,7 +315,8 @@ const validateForm = () => {
   errors.value = {
     file: '',
     name: '',
-    email: ''
+    email: '',
+    otp: ''
   }
   
   // Validate file
@@ -238,10 +344,164 @@ const validateForm = () => {
   return isValid
 }
 
+const validateOTP = () => {
+  // Reset OTP error
+  errors.value.otp = ''
+  
+  // Validate OTP (6 digits)
+  if (!otpCode.value.trim()) {
+    errors.value.otp = 'Please enter the verification code'
+    return false
+  }
+  
+  if (!/^\d{6}$/.test(otpCode.value)) {
+    errors.value.otp = 'Please enter a valid 6-digit code'
+    return false
+  }
+  
+  return true
+}
+
+const checkExistingBot = async () => {
+  try {
+    const response = await $fetch('http://localhost:8000/check-existing-bot', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        email: form.value.email
+      })
+    })
+    
+    if (response.has_existing_bot) {
+      existingBotId.value = response.bot_id
+      showConfirmation.value = true
+      return true
+    }
+    return false
+  } catch (error) {
+    console.error('Error checking existing bot:', error)
+    return false
+  }
+}
+
 const submitForm = async () => {
   if (!validateForm()) return
   
   isSubmitting.value = true
+  
+  try {
+    // Send OTP to email
+    const response = await $fetch('http://localhost:8000/send-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        email: form.value.email
+      })
+    })
+    
+    // Move to OTP verification step
+    currentStep.value = 'otp'
+    
+    // Start countdown for resend button
+    startOTPCountdown()
+  } catch (error) {
+    console.error('Error sending OTP:', error)
+    alert('There was an error sending the verification code. Please try again.')
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
+const verifyOTP = async () => {
+  if (!validateOTP()) return
+  
+  isVerifying.value = true
+  isProcessing.value = true  // Set overall processing state
+  
+  try {
+    // Verify OTP
+    const response = await $fetch('http://localhost:8000/verify-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.value.email,
+        otp: otpCode.value
+      })
+    })
+    
+    // Check if user already has a bot
+    const hasExistingBot = await checkExistingBot()
+    if (hasExistingBot) {
+      // Don't reset isProcessing here since we're still in the process
+      return // Wait for user confirmation
+    }
+    
+    // Proceed with upload
+    proceedWithUpload()
+  } catch (error) {
+    console.error('Error verifying OTP:', error)
+    errors.value.otp = 'Invalid or expired verification code'
+    isVerifying.value = false
+    isProcessing.value = false  // Reset processing state on error
+  }
+  // Note: Don't reset isProcessing in finally block since proceedWithUpload will handle it
+}
+
+const resendOTP = async () => {
+  try {
+    // Send OTP again
+    const response = await $fetch('http://localhost:8000/send-otp', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        email: form.value.email
+      })
+    })
+    
+    // Start countdown for resend button
+    startOTPCountdown()
+    
+    // Clear OTP input
+    otpCode.value = ''
+    errors.value.otp = ''
+  } catch (error) {
+    console.error('Error resending OTP:', error)
+    alert('There was an error resending the verification code. Please try again.')
+  }
+}
+
+const startOTPCountdown = () => {
+  otpResendDisabled.value = true
+  otpCountdown.value = 60
+  
+  const countdownInterval = setInterval(() => {
+    otpCountdown.value--
+    
+    if (otpCountdown.value <= 0) {
+      clearInterval(countdownInterval)
+      otpResendDisabled.value = false
+    }
+  }, 1000)
+}
+
+const goBackToForm = () => {
+  currentStep.value = 'form'
+  otpCode.value = ''
+  errors.value.otp = ''
+}
+
+const proceedWithUpload = async () => {
+  isSubmitting.value = true
+  showConfirmation.value = false
+  // Note: Don't reset isVerifying or isProcessing here since we're still processing
   
   try {
     // Create FormData to send file
@@ -249,6 +509,7 @@ const submitForm = async () => {
     formData.append('file', form.value.file)
     formData.append('email', form.value.email)
     formData.append('name', form.value.name)
+    formData.append('replace', 'true') // Always set replace to true when proceeding
     
     // Send to API
     const response = await $fetch('http://localhost:8000/upload', {
@@ -256,22 +517,38 @@ const submitForm = async () => {
       body: formData
     })
     
-    // Debug: Log the entire response
-    console.log('Full API response:', response)
-    
     // Store script tag from response
     scriptTag.value = response.script_tag
-    console.log('Script tag:', scriptTag.value)
     
     // Handle success
-    formSubmitted.value = true
+    currentStep.value = 'success'
   } catch (error) {
     // Handle error
     console.error('Error submitting form:', error)
-    alert('There was an error processing your request. Please try again.')
+    
+    // Check if it's an existing bot error
+    if (error.data && error.data.error === 'existing_bot') {
+      existingBotId.value = error.data.bot_id
+      showConfirmation.value = true
+    } else if (error.data && error.data.error === 'email_not_verified') {
+      // Go back to OTP step
+      currentStep.value = 'otp'
+      errors.value.otp = 'Email verification required. Please request a new code.'
+    } else {
+      alert('There was an error processing your request. Please try again.')
+    }
   } finally {
     isSubmitting.value = false
+    isVerifying.value = false
+    isProcessing.value = false  // Reset all processing states when done
   }
+}
+
+const cancelReplace = () => {
+  showConfirmation.value = false
+  isSubmitting.value = false
+  isVerifying.value = false
+  isProcessing.value = false  // Reset all processing states when canceling
 }
 
 const resetForm = () => {
@@ -281,13 +558,21 @@ const resetForm = () => {
     email: ''
   }
   selectedFile.value = null
-  formSubmitted.value = false
+  currentStep.value = 'form'
   scriptTag.value = ''
   copied.value = false
+  showConfirmation.value = false
+  existingBotId.value = ''
+  otpCode.value = ''
+  // Reset all processing states
+  isSubmitting.value = false
+  isVerifying.value = false
+  isProcessing.value = false
   errors.value = {
     file: '',
     name: '',
-    email: ''
+    email: '',
+    otp: ''
   }
 }
 
@@ -317,3 +602,20 @@ const copyScriptTag = async () => {
   }
 }
 </script>
+
+<style scoped>
+/* Add animation for modal */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+</style>
