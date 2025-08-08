@@ -50,13 +50,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Navbar from '~/components/Navbar.vue';
-import About from '~/components/About.vue';
-import Timeline from '~/components/Timeline.vue';
-import Skills from '~/components/Skills.vue';
-import Projects from '~/components/Projects.vue';
-import Certificates from '~/components/Certificates.vue';
-import Contact from '~/components/Contact.vue';
 
 // Shape Data
 const shapePathsMap = {
