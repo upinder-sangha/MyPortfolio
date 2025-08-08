@@ -9,25 +9,24 @@
 		TYPING_DELAY: 15,
 		TYPING_MAX_DELAY: 2000,
 		TYPING_SKIP_THRESHOLD: 150,
-
 		// Personalization settings (can be customized per website)
 		ownerName: "Owner", // Default owner name - should be customized per website
 		greeting:
 			"Hi there! I'm your Virtual Assistant. Feel free to ask me anything.",
 		assistantName: "Virtual Assistant",
-
-		// Refined color palette
+		// Improved color palette
 		colors: {
 			light: {
-				primary: "#467ee5ff", // Indigo for buttons/user messages
+				primary: "#4F46E5", // Indigo for buttons/user messages
 				primaryHover: "#4338CA", // Darker indigo for hover
-				secondary: "#10b98130", // Light gray for headers
+				secondary: "#F9FAFB", // Light gray for headers
 				accent: "#10B981", // Emerald for bot messages
 				background: "#FFFFFF", // White background
-				text: "#1F2937", // Dark gray for text
+				text: "#111827", // Dark gray for text
 				textSecondary: "#6B7280", // Medium gray for secondary text
 				border: "#E5E7EB", // Light gray for borders
 				codeBg: "#F3F4F6", // Light gray for code blocks
+				inputBg: "#F9FAFB", // Light background for inputs
 			},
 			dark: {
 				primary: "#6366F1", // Lighter indigo for buttons/user messages
@@ -36,9 +35,10 @@
 				accent: "#34D399", // Lighter emerald for bot messages
 				background: "#111827", // Dark background
 				text: "#F9FAFB", // Light gray for text
-				textSecondary: "#9CA3AF", // Medium gray for secondary text
+				textSecondary: "#D1D5DB", // Medium gray for secondary text
 				border: "#374151", // Dark gray for borders
-				codeBg: "#1F2937", // Dark gray for code blocks
+				codeBg: "#1E293B", // Dark blue-gray for code blocks
+				inputBg: "#1F2937", // Dark background for inputs
 			},
 		},
 	};
@@ -94,13 +94,20 @@
 		// Process markdown patterns in order of specificity
 		// Code blocks first (triple backticks)
 		html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
+			// Extract language if specified (e.g., ```javascript)
+			const languageMatch = code.match(/^(\w+)\n/);
+			const language = languageMatch ? languageMatch[1] : "";
+			const codeContent = languageMatch
+				? code.replace(/^\w+\n/, "")
+				: code;
+
 			// Escape HTML in code to prevent rendering
-			const escapedCode = code
+			const escapedCode = codeContent
 				.replace(/&/g, "&amp;")
 				.replace(/</g, "&lt;")
 				.replace(/>/g, "&gt;");
 
-			return `<pre class="p-3 rounded-lg overflow-x-auto my-2" style="background-color: ${colors.codeBg};"><code>${escapedCode}</code></pre>`;
+			return `<pre class="p-3 rounded-lg overflow-x-auto my-2" style="background-color: ${colors.codeBg};"><code class="language-${language}">${escapedCode}</code></pre>`;
 		});
 
 		// Inline code (single backticks)
@@ -215,6 +222,12 @@
 			};
 			tailwindScript.onerror = reject;
 			document.head.appendChild(tailwindScript);
+			// Inject Prism CSS for syntax highlighting
+			const prismStyle = document.createElement("link");
+			prismStyle.rel = "stylesheet";
+			prismStyle.href =
+				"https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css";
+			document.head.appendChild(prismStyle);
 		});
 	}
 
@@ -301,6 +314,31 @@
       }
     `;
 		document.head.appendChild(style);
+		// Inject Prism JS for syntax highlighting
+		const prismScript = document.createElement("script");
+		prismScript.src =
+			"https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js";
+		prismScript.onload = () => {
+			// Load additional languages if needed
+			const languages = [
+				"javascript",
+				"python",
+				"css",
+				"markup",
+				"bash",
+				"vue",
+				"react",
+				"svelte",
+				"angular",
+				"html",
+			];
+			languages.forEach((lang) => {
+				const langScript = document.createElement("script");
+				langScript.src = `https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-${lang}.min.js`;
+				document.head.appendChild(langScript);
+			});
+		};
+		document.head.appendChild(prismScript);
 	}
 
 	// Get bot_id from script tag
@@ -357,10 +395,10 @@
 	}
 
 	// Update modal theme
+	// Update modal theme
 	function updateModalTheme() {
 		const modal = document.getElementById(config.MODAL_ID);
 		if (!modal) return;
-
 		const colors = getColors();
 		const modalHeader = modal.querySelector("div");
 		const chatMessages = document.getElementById("chat-messages");
@@ -374,7 +412,6 @@
 		if (modalHeader) {
 			modalHeader.style.backgroundColor = colors.secondary;
 			modalHeader.style.borderColor = colors.border;
-
 			const headerText = modalHeader.querySelector("h3");
 			if (headerText) {
 				headerText.style.color = colors.text;
@@ -386,7 +423,7 @@
 		}
 
 		if (chatInput) {
-			chatInput.style.backgroundColor = colors.background;
+			chatInput.style.backgroundColor = colors.inputBg; // Use input background color
 			chatInput.style.color = colors.text;
 			chatInput.style.borderColor = colors.border;
 		}
@@ -421,6 +458,7 @@
 	}
 
 	// Create chat button with modern icon and attention animation
+	// Create chat button with modern icon and attention animation
 	function createButton() {
 		const colors = getColors();
 		const button = document.createElement("button");
@@ -431,19 +469,24 @@
 		button.setAttribute("aria-label", "Open Virtual Assistant");
 		button.setAttribute("aria-expanded", "false");
 		button.innerHTML = `
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+      <svg class="w-7 h-7 text-white" viewBox="0 -1 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Rounded head -->
+          <rect x="4.5" y="6.5" width="15" height="11" rx="4.5" ry="4.5" stroke="currentColor" fill="none"/>
+          <!-- Eyes -->
+          <circle cx="9" cy="12" r="1.2" fill="currentColor"/>
+          <circle cx="15" cy="12" r="1.2" fill="currentColor"/>
+          <!-- Antenna -->
+          <line x1="12" y1="5" x2="12" y2="3" stroke="currentColor" stroke-linecap="round"/>
+          <circle cx="12" cy="2.3" r="0.8" fill="currentColor"/>
       </svg>
       <span class="hidden sm:inline text-sm font-medium">Assistant</span>
     `;
 		document.body.appendChild(button);
-
 		// Stop animation after first interaction
 		button.addEventListener("click", function stopAnimation() {
 			button.classList.remove("attention-grabber");
 			button.removeEventListener("click", stopAnimation);
 		});
-
 		return button;
 	}
 
@@ -463,8 +506,15 @@
       <div class="p-4 flex justify-between items-center rounded-t-2xl" style="background-color: ${colors.secondary}; border-color: ${colors.border};">
         <div class="flex items-center gap-2">
           <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: ${colors.accent};">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            <svg class="w-7 h-7 text-white" viewBox="0 -1 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <!-- Rounded head -->
+                <rect x="4.5" y="6.5" width="15" height="11" rx="4.5" ry="4.5" stroke="currentColor" fill="none"/>
+                <!-- Eyes -->
+                <circle cx="9" cy="12" r="1.2" fill="currentColor"/>
+                <circle cx="15" cy="12" r="1.2" fill="currentColor"/>
+                <!-- Antenna -->
+                <line x1="12" y1="5" x2="12" y2="3" stroke="currentColor" stroke-linecap="round"/>
+                <circle cx="12" cy="2.3" r="0.8" fill="currentColor"/>
             </svg>
           </div>
           <div>
@@ -488,7 +538,7 @@
           type="text"
           placeholder="Ask about ${config.ownerName}..."
           class="flex-1 p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-200"
-          style="background-color: ${colors.background}; color: ${colors.text}; border-color: ${colors.border};"
+          style="background-color: ${colors.inputBg}; color: ${colors.text}; border-color: ${colors.border};"
           aria-label="Type your question"
         />
         <button
@@ -515,10 +565,17 @@
 			"w-8 h-8 rounded-full flex items-center justify-center shrink-0";
 		avatar.style.backgroundColor = colors.accent;
 		avatar.innerHTML = `
-      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-      </svg>
-    `;
+			<svg class="w-7 h-7 text-white" viewBox="0 -1 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<!-- Rounded head -->
+				<rect x="4.5" y="6.5" width="15" height="11" rx="4.5" ry="4.5" stroke="currentColor" fill="none"/>
+				<!-- Eyes -->
+				<circle cx="9" cy="12" r="1.2" fill="currentColor"/>
+				<circle cx="15" cy="12" r="1.2" fill="currentColor"/>
+				<!-- Antenna -->
+				<line x1="12" y1="5" x2="12" y2="3" stroke="currentColor" stroke-linecap="round"/>
+				<circle cx="12" cy="2.3" r="0.8" fill="currentColor"/>
+			</svg>
+		`;
 		return avatar;
 	}
 
@@ -538,6 +595,7 @@
 	}
 
 	// Create typing indicator
+	// Create typing indicator
 	function createTypingIndicator() {
 		const colors = getColors();
 		const indicator = document.createElement("div");
@@ -546,12 +604,12 @@
 		indicator.innerHTML = `
       ${createBotAvatar().outerHTML}
       <div class="p-3 rounded-2xl text-sm rounded-bl-none" style="background-color: ${
-			colors.accent
-		}30;">
+			colors.accent + "20" // 20% opacity for better visibility
+		};">
         <div class="typing-indicator">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span style="background-color: ${colors.accent};"></span>
+          <span style="background-color: ${colors.accent};"></span>
+          <span style="background-color: ${colors.accent};"></span>
         </div>
       </div>
     `;
@@ -732,6 +790,10 @@
 				text
 			)}</div>`;
 			messages.scrollTop = messages.scrollHeight;
+		}
+		// Add this at the end of the addMessage function
+		if (typeof Prism !== "undefined") {
+			Prism.highlightAllUnder(messages);
 		}
 	}
 
