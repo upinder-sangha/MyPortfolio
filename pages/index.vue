@@ -49,9 +49,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
+import Navbar from '~/components/Navbar.vue';
+import About from '~/components/About.vue';
+import Timeline from '~/components/Timeline.vue';
+import Skills from '~/components/Skills.vue';
+import Projects from '~/components/Projects.vue';
+import Certificates from '~/components/Certificates.vue';
+import Contact from '~/components/Contact.vue';
 
-// ===== Shape Data =====
+// Shape Data
 const shapePathsMap = {
   hash: "M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5",
   htmltag: "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5",
@@ -97,10 +104,12 @@ const shapes = ref([])
 
 onMounted(() => {
   const script = document.createElement('script');
-  script.src = 'http://10.0.0.233:3000/docative-widget.js';
+  script.src = 'https://www.upindersangha.com/docative-widget.js'; // Update to production URL
   script.async = true;
-  script.setAttribute('data-bot-id', '02401979-b302-4f64-9a71-6d488626da61');
+  script.setAttribute('data-bot-id', 'e97ee9ec-1853-40ea-8cd2-bdfd4c6ec3ea');
   script.setAttribute('data-name', 'Upinder Singh Sangha');
+  script.onload = () => console.log('Chatbot script loaded');
+  script.onerror = () => console.error('Failed to load chatbot script');
   document.body.appendChild(script);
 
   const startOffset = Math.floor(Math.random() * shapeKeys.length)
@@ -122,6 +131,38 @@ onMounted(() => {
 
   shapes.value = positions
 })
+
+// SEO Metadata
+useHead({
+  title: 'Upinder Singh Sangha | Portfolio',
+  meta: [
+    { name: 'description', content: 'Software Developer and Data Analyst specializing in full-stack, cloud, and AI. Explore my projects, skills, and experience.' },
+    { name: 'keywords', content: 'Upinder, Portfolio, Software Developer, Full-Stack, AI, Data Analyst, Cloud, Machine Learning' },
+    { property: 'og:title', content: 'Upinder Singh Sangha | Portfolio' },
+    { property: 'og:description', content: 'Explore my projects, skills, and experience as a Software Developer and Data Analyst.' },
+    { property: 'og:url', content: 'https://www.upindersangha.com/' },
+    { property: 'og:image', content: 'https://www.upindersangha.com/images/Preview.png' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:image', content: 'https://www.upindersangha.com/images/Preview.png' },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Upinder Singh Sangha',
+        url: 'https://www.upindersangha.com',
+        sameAs: [
+          'https://www.linkedin.com/in/upinder-sangha',
+          'https://github.com/upinder-sangha'
+        ],
+        jobTitle: 'Software Developer / Data Analyst',
+      }),
+    },
+  ],
+  __dangerouslyDisableSanitizers: ['script'],
+});
 </script>
 
 <style scoped>
@@ -131,7 +172,6 @@ onMounted(() => {
   50% { transform: translateY(20px); }
   100% { transform: translateY(0px); }
 }
-
 .animate-float1 { animation: float 2s ease-in-out infinite; }
 .animate-float2 { animation: float 3s ease-in-out infinite; }
 .animate-float3 { animation: float 5s ease-in-out infinite; }

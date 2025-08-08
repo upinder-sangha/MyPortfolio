@@ -3,8 +3,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    // @ts-expect-error: injected by the sitemap module at runtime
+    hostname: 'https://www.upindersangha.com',
+    routes: ['/', '/about', '/docative'],
+  },
   css: [
     '~/assets/main.css'
   ],  
