@@ -92,7 +92,7 @@ const chatbotLoaded = ref(false);
 function loadChatbotScript() {
   return new Promise((resolve, reject) => {
     // Check if script is already loaded
-    if (document.querySelector('script[data-bot-id="00f76502-c22a-4fea-b394-ecedfce1016f"]')) {
+    if (document.querySelector('script[data-bot-id="f5bd4351-58df-419e-8b4d-00cf6ac7c898"]')) {
       resolve();
       return;
     }
@@ -101,7 +101,7 @@ function loadChatbotScript() {
     const script = document.createElement('script');
     script.src = 'http://10.0.0.233:3000/docative-widget.js';
     script.async = true;
-    script.setAttribute('data-bot-id', '00f76502-c22a-4fea-b394-ecedfce1016f');
+    script.setAttribute('data-bot-id', 'f5bd4351-58df-419e-8b4d-00cf6ac7c898');
     script.setAttribute('data-name', 'Docative');
     
     script.onload = () => {

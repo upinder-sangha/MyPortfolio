@@ -2,7 +2,8 @@
 <template>
   <div class="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10">
     <div class="relative">
-      <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-3xl opacity-20"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur-3xl opacity-20">
+      </div>
       <div class="relative bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl shadow-xl p-0">
         <div class="bg-white rounded-3xl p-0 border-2 border-indigo-300">
           <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl px-4 py-8 md:p-12">
@@ -12,31 +13,26 @@
                 Upload your document and get your personalized chatbot in seconds. It's free to get started!
               </p>
             </div>
-            
+
             <form @submit.prevent="submitForm" class="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100">
               <!-- Step 1: Form Input -->
               <div v-if="currentStep === 'form'">
                 <!-- File Upload Area -->
                 <div class="mb-6">
                   <label class="block text-gray-700 font-medium mb-2">Upload Your Document</label>
-                  <div 
-                    @dragover.prevent="dragOver = true"
-                    @dragleave.prevent="dragOver = false"
+                  <div @dragover.prevent="dragOver = true" @dragleave.prevent="dragOver = false"
                     @drop.prevent="handleFileDrop"
                     class="border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-300"
                     :class="dragOver ? 'border-indigo-500 bg-indigo-50' : 'border-gray-300 hover:border-indigo-400'"
-                    @click="$refs.fileInput.click()"
-                  >
-                    <input 
-                      ref="fileInput"
-                      type="file" 
-                      class="hidden" 
-                      @change="handleFileChange"
-                      accept=".pdf,.docx,.txt"
-                    >
+                    @click="$refs.fileInput.click()">
+                    <input ref="fileInput" type="file" class="hidden" @change="handleFileChange"
+                      accept=".pdf,.docx,.txt">
                     <div class="flex flex-col items-center justify-center">
-                      <svg class="mx-auto h-12 w-12 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                      <svg class="mx-auto h-12 w-12 text-gray-400 mb-3" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                        </path>
                       </svg>
                       <p class="text-sm text-gray-600">
                         <span class="font-medium text-indigo-600">Click to upload</span> or drag and drop
@@ -45,146 +41,133 @@
                     </div>
                   </div>
                   <div v-if="selectedFile" class="mt-2 flex items-center text-sm text-gray-600">
-                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-500" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                     {{ selectedFile.name }}
                   </div>
                   <p v-if="errors.file" class="mt-1 text-sm text-red-600">{{ errors.file }}</p>
                 </div>
-                
+
                 <!-- Name Input -->
                 <div class="mb-6">
                   <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                  <input 
-                    id="name"
-                    v-model="form.name"
-                    type="text" 
+                  <input id="name" v-model="form.name" type="text"
                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300"
-                    placeholder="Your Name or Company Name (The name you want to display)"
-                  >
+                    placeholder="Your Name or Company Name (The name you want to display)">
                   <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
                 </div>
-                
+
                 <!-- Email Input -->
                 <div class="mb-8">
                   <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                  <input 
-                    id="email"
-                    v-model="form.email"
-                    type="email" 
+                  <input id="email" v-model="form.email" type="email"
                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300"
-                    placeholder="you@example.com"
-                  >
+                    placeholder="you@example.com">
                   <p v-if="errors.email" class="mt-1 text-sm text-red-600">{{ errors.email }}</p>
                 </div>
-                
+
                 <!-- Submit Button -->
                 <div class="text-center">
-                  <button 
-                    type="submit"
+                  <button type="submit"
                     class="relative px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-xl w-full md:w-auto"
-                    :disabled="isSubmitting"
-                  >
+                    :disabled="isSubmitting">
                     <span v-if="isSubmitting" class="flex items-center justify-center">
                       <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
                       </svg>
                       Processing...
                     </span>
                     <span v-else class="relative z-10">Generate My Chatbot</span>
-                    <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 hover:opacity-100 transition-opacity duration-500"></span>
+                    <span
+                      class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 hover:opacity-100 transition-opacity duration-500"></span>
                   </button>
                 </div>
               </div>
-              
+
               <!-- Step 2: OTP Verification -->
               <div v-else-if="currentStep === 'otp'" class="text-center py-6">
                 <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                    </path>
                   </svg>
                 </div>
-                
+
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">One Last Step!</h3>
                 <p class="text-gray-600 mb-6">
-                  We've sent a verification code to <span class="font-semibold">{{ form.email }}</span>. 
+                  We've sent a verification code to <span class="font-semibold">{{ form.email }}</span>.
                   Please enter the code below to complete your chatbot creation.
                 </p>
-                
+
                 <div class="mb-6">
                   <label for="otp" class="block text-gray-700 font-medium mb-2">Verification Code</label>
-                  <input 
-                    id="otp"
-                    v-model="otpCode"
-                    type="text" 
-                    maxlength="6"
+                  <input id="otp" v-model="otpCode" type="text" maxlength="6"
                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 text-center text-lg tracking-widest"
-                    placeholder="000000"
-                  >
+                    placeholder="000000">
                   <p v-if="errors.otp" class="mt-1 text-sm text-red-600">{{ errors.otp }}</p>
                 </div>
-                
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                  <button 
-                    type="button"
-                    @click="verifyOTP"
+                  <button type="button" @click="verifyOTP"
                     class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                    :disabled="isProcessing || !otpCode.trim()"
-                  >
+                    :disabled="isProcessing || !otpCode.trim()">
                     <span v-if="isVerifying" class="flex items-center justify-center">
                       <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
                       </svg>
                       Verifying...
                     </span>
                     <span v-else>Verify & Create Chatbot</span>
                   </button>
-                  
-                  <button 
-                    type="button"
-                    @click="resendOTP"
+
+                  <button type="button" @click="resendOTP"
                     class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300"
-                    :disabled="otpResendDisabled"
-                  >
+                    :disabled="otpResendDisabled">
                     <span v-if="otpResendDisabled">Resend in {{ otpCountdown }}s</span>
                     <span v-else>Resend Code</span>
                   </button>
                 </div>
-                
-                <button 
-                  type="button"
-                  @click="goBackToForm"
-                  class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300"
-                >
+
+                <button type="button" @click="goBackToForm"
+                  class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
                   ← Back to form
                 </button>
               </div>
-              
+
               <!-- Success Message -->
               <div v-else-if="currentStep === 'success'" class="text-center py-8">
-                <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <div
+                  class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                   <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">Check Your Email!</h3>
                 <p class="text-gray-700 mb-6 max-w-md mx-auto">
-                  We've sent your personalized script tag to <span class="font-semibold">{{ form.email }}</span> along with the instructions to integrate it with your website. 
+                  We've sent your personalized script tag to <span class="font-semibold">{{ form.email }}</span> along
+                  with the instructions to integrate it with your website.
                   Simply add it to your website to activate your chatbot.
                 </p>
                 <div class="bg-gray-50 rounded-xl p-4 mb-6 max-w-md mx-auto">
                   <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium text-gray-700">Your Script Tag:</span>
-                    <button 
-                      type="button"
-                      @click="copyScriptTag"
-                      class="flex items-center text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200"
-                    >
+                    <button type="button" @click="copyScriptTag"
+                      class="flex items-center text-sm text-indigo-600 hover:text-indigo-800 transition-colors duration-200">
                       <svg v-if="!copied" class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                        </path>
                       </svg>
                       <svg v-else class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -192,15 +175,13 @@
                       {{ copied ? 'Copied!' : 'Copy' }}
                     </button>
                   </div>
-                  <div class="text-xs font-mono text-gray-700 overflow-x-auto p-3 bg-gray-100 rounded-lg border border-gray-200">
+                  <div
+                    class="text-xs font-mono text-gray-700 overflow-x-auto p-3 bg-gray-100 rounded-lg border border-gray-200">
                     {{ scriptTag }}
                   </div>
                 </div>
-                <button 
-                  type="button"
-                  @click="resetForm"
-                  class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-                >
+                <button type="button" @click="resetForm"
+                  class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
                   Create Another Chatbot
                 </button>
               </div>
@@ -209,33 +190,33 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Confirmation Modal -->
     <div v-if="showConfirmation" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all duration-300 scale-95 animate-scaleIn">
+      <div
+        class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transform transition-all duration-300 scale-95 animate-scaleIn">
         <div class="text-center">
           <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg class="w-8 h-8 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
             </svg>
           </div>
-          
+
           <h3 class="text-xl font-bold text-gray-900 mb-2">Replace Your Existing Chatbot?</h3>
           <p class="text-gray-600 mb-6">
-            You already have a Docative chatbot. Creating a new one will replace your existing bot, which will no longer work. Are you sure you want to continue?
+            You already have a Docative chatbot. Creating a new one will replace your existing bot, which will no longer
+            work. Are you sure you want to continue?
           </p>
-          
+
           <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <button 
-              @click="cancelReplace"
-              class="px-5 py-2.5 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300"
-            >
+            <button @click="cancelReplace"
+              class="px-5 py-2.5 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-300">
               Cancel
             </button>
-            <button 
-              @click="proceedWithUpload"
-              class="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300"
-            >
+            <button @click="proceedWithUpload"
+              class="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300">
               Yes, Replace My Chatbot
             </button>
           </div>
@@ -247,6 +228,9 @@
 
 <script setup>
 import { ref } from 'vue'
+
+// Change the base URL here to point to your API server
+const API_BASE_URL = 'http://13.222.155.33:8000'
 
 const form = ref({
   file: null,
@@ -290,27 +274,27 @@ const handleFileChange = (e) => {
 const validateAndSetFile = (file) => {
   // Reset file error
   errors.value.file = ''
-  
+
   // Check file type
   const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain']
   if (!validTypes.includes(file.type)) {
     errors.value.file = 'Please upload a PDF, DOCX, or TXT file'
     return
   }
-  
+
   // Check file size (5MB limit)
   if (file.size > 5 * 1024 * 1024) {
     errors.value.file = 'File size must be less than 5MB'
     return
   }
-  
+
   selectedFile.value = file
   form.value.file = file
 }
 
 const validateForm = () => {
   let isValid = true
-  
+
   // Reset errors
   errors.value = {
     file: '',
@@ -318,19 +302,19 @@ const validateForm = () => {
     email: '',
     otp: ''
   }
-  
+
   // Validate file
   if (!form.value.file) {
     errors.value.file = 'Please upload a file'
     isValid = false
   }
-  
+
   // Validate name
   if (!form.value.name.trim()) {
     errors.value.name = 'Please enter your name'
     isValid = false
   }
-  
+
   // Validate email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!form.value.email.trim()) {
@@ -340,31 +324,31 @@ const validateForm = () => {
     errors.value.email = 'Please enter a valid email address'
     isValid = false
   }
-  
+
   return isValid
 }
 
 const validateOTP = () => {
   // Reset OTP error
   errors.value.otp = ''
-  
+
   // Validate OTP (6 digits)
   if (!otpCode.value.trim()) {
     errors.value.otp = 'Please enter the verification code'
     return false
   }
-  
+
   if (!/^\d{6}$/.test(otpCode.value)) {
     errors.value.otp = 'Please enter a valid 6-digit code'
     return false
   }
-  
+
   return true
 }
 
 const checkExistingBot = async () => {
   try {
-    const response = await $fetch('http://localhost:8000/check-existing-bot', {
+    const response = await $fetch(`${API_BASE_URL}/check-existing-bot`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -373,7 +357,7 @@ const checkExistingBot = async () => {
         email: form.value.email
       })
     })
-    
+
     if (response.has_existing_bot) {
       existingBotId.value = response.bot_id
       showConfirmation.value = true
@@ -388,12 +372,12 @@ const checkExistingBot = async () => {
 
 const submitForm = async () => {
   if (!validateForm()) return
-  
+
   isSubmitting.value = true
-  
+
   try {
     // Send OTP to email
-    const response = await $fetch('http://localhost:8000/send-otp', {
+    const response = await $fetch(`${API_BASE_URL}/send-otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -402,10 +386,10 @@ const submitForm = async () => {
         email: form.value.email
       })
     })
-    
+
     // Move to OTP verification step
     currentStep.value = 'otp'
-    
+
     // Start countdown for resend button
     startOTPCountdown()
   } catch (error) {
@@ -418,13 +402,13 @@ const submitForm = async () => {
 
 const verifyOTP = async () => {
   if (!validateOTP()) return
-  
+
   isVerifying.value = true
   isProcessing.value = true  // Set overall processing state
-  
+
   try {
     // Verify OTP
-    const response = await $fetch('http://localhost:8000/verify-otp', {
+    const response = await $fetch(`${API_BASE_URL}/verify-otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -434,14 +418,14 @@ const verifyOTP = async () => {
         otp: otpCode.value
       })
     })
-    
+
     // Check if user already has a bot
     const hasExistingBot = await checkExistingBot()
     if (hasExistingBot) {
       // Don't reset isProcessing here since we're still in the process
       return // Wait for user confirmation
     }
-    
+
     // Proceed with upload
     proceedWithUpload()
   } catch (error) {
@@ -456,7 +440,7 @@ const verifyOTP = async () => {
 const resendOTP = async () => {
   try {
     // Send OTP again
-    const response = await $fetch('http://localhost:8000/send-otp', {
+    const response = await $fetch(`${API_BASE_URL}/send-otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -465,10 +449,10 @@ const resendOTP = async () => {
         email: form.value.email
       })
     })
-    
+
     // Start countdown for resend button
     startOTPCountdown()
-    
+
     // Clear OTP input
     otpCode.value = ''
     errors.value.otp = ''
@@ -481,10 +465,10 @@ const resendOTP = async () => {
 const startOTPCountdown = () => {
   otpResendDisabled.value = true
   otpCountdown.value = 60
-  
+
   const countdownInterval = setInterval(() => {
     otpCountdown.value--
-    
+
     if (otpCountdown.value <= 0) {
       clearInterval(countdownInterval)
       otpResendDisabled.value = false
@@ -502,7 +486,7 @@ const proceedWithUpload = async () => {
   isSubmitting.value = true
   showConfirmation.value = false
   // Note: Don't reset isVerifying or isProcessing here since we're still processing
-  
+
   try {
     // Create FormData to send file
     const formData = new FormData()
@@ -510,22 +494,22 @@ const proceedWithUpload = async () => {
     formData.append('email', form.value.email)
     formData.append('name', form.value.name)
     formData.append('replace', 'true') // Always set replace to true when proceeding
-    
+
     // Send to API
-    const response = await $fetch('http://localhost:8000/upload', {
+    const response = await $fetch(`${API_BASE_URL}/upload`, {
       method: 'POST',
       body: formData
     })
-    
+
     // Store script tag from response
     scriptTag.value = response.script_tag
-    
+
     // Handle success
     currentStep.value = 'success'
   } catch (error) {
     // Handle error
     console.error('Error submitting form:', error)
-    
+
     // Check if it's an existing bot error
     if (error.data && error.data.error === 'existing_bot') {
       existingBotId.value = error.data.bot_id
@@ -580,7 +564,7 @@ const copyScriptTag = async () => {
   try {
     await navigator.clipboard.writeText(scriptTag.value)
     copied.value = true
-    
+
     // Reset copied status after 2 seconds
     setTimeout(() => {
       copied.value = false
@@ -594,7 +578,7 @@ const copyScriptTag = async () => {
     textArea.select()
     document.execCommand('copy')
     document.body.removeChild(textArea)
-    
+
     copied.value = true
     setTimeout(() => {
       copied.value = false
@@ -610,11 +594,13 @@ const copyScriptTag = async () => {
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
   }
 }
+
 .animate-scaleIn {
   animation: scaleIn 0.3s ease-out forwards;
 }
