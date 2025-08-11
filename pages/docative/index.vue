@@ -114,14 +114,14 @@ const chatbotLoaded = ref(false);
 
 function loadChatbotScript() {
   return new Promise((resolve, reject) => {
-    if (document.querySelector('script[data-bot-id="f5bd4351-58df-419e-8b4d-00cf6ac7c898"]')) {
+    if (document.querySelector('script[data-bot-id="183aaf64-7477-48f0-bc9a-c6d521989e51"]')) {
       resolve();
       return;
     }
     const script = document.createElement('script');
     script.src = 'https://www.upindersangha.com/docative-widget.js'; // Update to production URL
     script.async = true;
-    script.setAttribute('data-bot-id', 'f5bd4351-58df-419e-8b4d-00cf6ac7c898');
+    script.setAttribute('data-bot-id', '183aaf64-7477-48f0-bc9a-c6d521989e51');
     script.setAttribute('data-name', 'Docative');
     script.onload = () => {
       setTimeout(() => {
