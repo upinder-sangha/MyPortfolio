@@ -230,7 +230,9 @@
 import { ref } from 'vue'
 
 // Change the base URL here to point to your API server
-const API_BASE_URL = 'http://13.222.155.33:8000'
+// const API_BASE_URL = 'http://13.222.155.33:8000'
+const API_BASE_URL = 'https://docative.duckdns.org'
+
 
 const form = ref({
   file: null,
