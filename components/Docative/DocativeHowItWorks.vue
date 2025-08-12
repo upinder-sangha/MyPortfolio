@@ -71,14 +71,14 @@
 <script setup>
 const steps = [
   {
-    title: 'Upload Your Document',
-    description: 'Upload your PDF, DOCX, or TXT file containing the content you want your chatbot to know.',
+    title: 'Upload Your Content',
+    description: 'Upload your PDF, DOCX, or TXT file, or provide a website URL containing the content you want your chatbot to know.',
     iconPath: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12',
     iconColor: 'text-indigo-400',
     textColor: 'text-indigo-600',
     subTextColor: 'text-indigo-500',
-    contentText: 'Drag & drop your file here',
-    subText: 'PDF, DOCX, TXT',
+    contentText: 'Drag & drop your file or enter URL',
+    subText: 'PDF, DOCX, TXT, or Website',
     contentClass: 'bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-4 w-full max-w-xs border-2 border-dashed border-indigo-200',
     bgClass: 'bg-gradient-to-r from-indigo-500 to-purple-600',
     bgBlurClass: 'bg-gradient-to-r from-indigo-500 to-purple-600'
@@ -96,7 +96,7 @@ const steps = [
   },
   {
     title: 'Embed and Start Chatting',
-    description: 'Add the script to your website and immediately start interacting with your document through the chatbot.',
+    description: 'Add the script to your website and immediately start interacting with your content through the chatbot.',
     iconPath: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
     iconColor: 'text-pink-500',
     textColor: 'text-pink-500',

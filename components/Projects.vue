@@ -75,6 +75,7 @@ const projectImages = {
   'Image-Classification-of-Plant-Diseases-Using-CNN': '/images/Image-Classification-of-Plant-Diseases-Using-CNN.png',
   'Fake-News-Detector-Bot': '/images/Fake-News-Detector-Bot.png',
   'MyPortfolio': '/images/MyPortfolio.png',
+  'docative': '/images/docative.png',
   placeholder: '/images/placeholder.png'
 }
 </script>

@@ -1,10 +1,9 @@
-<!-- components/docative/DocativeBottomCTA.vue -->
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to make your docs talkative?</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to make your content talkative?</h2>
       <p class="text-lg md:text-xl text-indigo-100 mb-10 max-w-3xl mx-auto">
-        Join thousands of users who are transforming their static documents into interactive experiences.
+        Join thousands of users who are transforming their documents and websites into interactive chatbot experiences.
       </p>
       
       <div class="flex flex-col sm:flex-row justify-center gap-4">

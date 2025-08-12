@@ -4,15 +4,16 @@
 
 ### What is Docative?
 
-Docative is an AI-powered chatbot service that lets you create a custom chatbot from your documents (PDF, DOCX, TXT). Upload your content at [www.upindersangha.com/docative](https://www.upindersangha.com/docative), receive a script tag, and embed a chatbot on any website to answer questions based on your documents.
+Docative is an AI-powered chatbot service that lets you create a custom chatbot from your documents (PDF, DOCX, TXT) or website URLs. Upload your content or provide a URL at [www.upindersangha.com/docative](https://www.upindersangha.com/docative), receive a script tag, and embed a chatbot on any website to answer questions based on your content.
 
 ### What does Docative do?
 
-Docative processes uploaded documents to create a chatbot that answers customer questions automatically, ideal for support, onboarding, or information retrieval.
+Docative processes uploaded documents or scraped website content to create a chatbot that answers customer questions automatically, ideal for support, onboarding, or information retrieval.
 
 ### Why use Docative?
 
 Docative saves time by automating answers, ensures consistency, and is easy to set up with no coding required. It works on any website, from static HTML to CMS platforms.
+- Flexibility in content sources (files or URLs)
 
 ## Pricing
 
@@ -27,6 +28,7 @@ The Free plan costs $0/month and is perfect for trying out Docative. It includes
 -   One chatbot per user
 -   Basic customization
 -   Easy website integration
+-   File upload or website URL input options
 -   Email support ([upindersangha01@gmail.com](mailto:upindersangha01@gmail.com))
 
 ### What is the Pro plan?
@@ -34,7 +36,7 @@ The Free plan costs $0/month and is perfect for trying out Docative. It includes
 The Pro plan costs $19/month and is designed for power users and businesses. It includes:
 
 -   Multiple chatbots
--   Automatic scraping of websites
+-   Advanced website scraping (more pages, deeper crawling)
 -   Chat analytics
 -   Advanced customization
 -   Priority support
@@ -49,33 +51,38 @@ Go to [www.upindersangha.com/docative](https://www.upindersangha.com/docative) t
 
 ### How do I create a chatbot with Docative?
 
-Go to [www.upindersangha.com/docative](https://www.upindersangha.com/docative), upload a PDF, DOCX, or TXT file, and enter your email. Docative processes the file and emails you a script tag to embed the chatbot.
+Go to [www.upindersangha.com/docative](https://www.upindersangha.com/docative), upload a PDF, DOCX, or TXT file or provide a website URL, and enter your email. Docative processes the content and emails you a script tag to embed the chatbot.
 
-### What file types are supported?
+### What content sources are supported?
 
-You can upload PDF, DOCX, or TXT files, up to 5MB in size.
+You can upload PDF, DOCX, or TXT files (up to 5MB) or provide a website URL (scraping up to 20 pages, depth 2 levels).
 
 ### How long does it take to create a chatbot?
 
-The process takes 1-2 minutes. After uploading, you’ll receive an email with the script tag.
+The process takes 1-2 minutes for file uploads. Website scraping may take longer depending on the site size.
 
-### Can I upload multiple files?
+### Can I use multiple files or URLs?
 
-Currently, Docative supports one file per chatbot. Combine multiple documents into a single file before uploading.
+Currently, Docative supports one source per chatbot (either a file or a URL). Combine multiple documents into a single file or choose a primary URL before submitting.
 
-### What happens after uploading?
+### What happens after providing content?
 
-The file is parsed, chunked, and embedded using AI. A unique bot ID is generated, and a script tag is emailed to you for embedding.
+The content is parsed, chunked, and embedded using AI. For files, the text is extracted directly. For URLs, the website is scraped (respecting robots.txt, up to 20 pages at depth 2), text is extracted, concatenated, and truncated if needed. A unique bot ID is generated, and a script tag is emailed to you for embedding.
 
-### How do I prepare my document?
+### How do I prepare my document or website?
 
-Use clear, well-organized text in your PDF, DOCX, or TXT file. Include headings, bullet points, or numbered lists to improve answer retrieval.
+For documents: Use clear, well-organized text in your PDF, DOCX, or TXT file. Include headings, bullet points, or numbered lists to improve answer retrieval.
+For websites: Ensure the site is publicly accessible, has a robots.txt that allows scraping, and is structured with clear text content (avoid heavy JavaScript rendering).
+
+### What happens during website scraping?
+
+Docative checks the site's robots.txt for permission. If allowed, it scrapes up to 20 pages at a depth of 2 levels from the provided URL, extracts text content, concatenates it into a single document, and truncates if the content exceeds processing limits. The scraped text is then chunked and embedded like a file.
 
 ## Embedding the Chatbot
 
 ### How do I embed the Docative chatbot?
 
-After uploading your file, you’ll receive a script tag like:
+After providing your content, you’ll receive a script tag like:
 
 ```html
 <script
@@ -272,11 +279,11 @@ Yes, the chatbot is responsive and works on desktop and mobile websites.
 
 ### How does the chatbot work?
 
-The chatbot uses AI to search your uploaded document and generate answers based on its content, providing natural-language responses.
+The chatbot uses AI to search your uploaded document or scraped website content and generate answers based on it, providing natural-language responses.
 
 ### What questions can the chatbot answer?
 
-It answers questions related to your uploaded document, such as product details, instructions, or policies. Ensure your document is clear and comprehensive.
+It answers questions related to your uploaded document or scraped website, such as product details, instructions, or policies. Ensure your content is clear and comprehensive.
 
 ### What if the chatbot can’t answer a question?
 
@@ -292,12 +299,12 @@ Currently, it supports English-only documents and responses. Multilingual suppor
 
 Docative is designed for anyone with a website who needs a chatbot that knows their content. Common users include Content Creators, Developers, Marketers, Educators, Support Teams, and E-commerce businesses.
 
--   **Personal Websites**: Upload your resume, CV, or portfolio to create a chatbot that represents you. Perfect for freelancers, job seekers, and professionals who want to make a strong impression.
--   **Small Businesses**: Create a chatbot that knows your products, services, and business hours. Provide instant customer support without hiring additional staff.
--   **Product Documentation**: Turn your product manuals and user guides into interactive chatbots. Help users find answers quickly and reduce support tickets.
--   **API & Library Documentation**: Make your technical documentation interactive. Developers can ask questions and get code examples or explanations instantly.
--   **Educational Content**: Transform course materials, textbooks, or study guides into interactive learning experiences. Students can ask questions and get answers based on the content.
--   **Event Information**: For conferences, webinars, or any event, create a chatbot that provides details about schedules, speakers, and FAQs.
+-   **Personal Websites**: Upload your resume, CV, or portfolio, or provide your personal website URL to create a chatbot that represents you. Perfect for freelancers, job seekers, and professionals who want to make a strong impression.
+-   **Small Businesses**: Create a chatbot that knows your products, services, and business hours by uploading documents or providing your website URL. Provide instant customer support without hiring additional staff.
+-   **Product Documentation**: Turn your product manuals and user guides into interactive chatbots by uploading files or providing a documentation website URL. Help users find answers quickly and reduce support tickets.
+-   **API & Library Documentation**: Make your technical documentation interactive by uploading files or providing a documentation website URL. Developers can ask questions and get code examples or explanations instantly.
+-   **Educational Content**: Transform course materials, textbooks, or study guides into interactive learning experiences by uploading files or providing an educational website URL. Students can ask questions and get answers based on the content.
+-   **Event Information**: For conferences, webinars, or any event, create a chatbot that provides details about schedules, speakers, and FAQs by uploading event documents or providing an event website URL.
 
 ## Technical Details
 
@@ -305,17 +312,17 @@ Docative is designed for anyone with a website who needs a chatbot that knows th
 
 Docative uses OpenAI for embeddings and chat completions, Qdrant for vector storage, FastAPI for the backend (hosted on AWS EC2), and Nuxt 3 for the frontend (hosted on Vercel).
 
-### What is the file size limit?
+### What are the content source limits?
 
-Files are limited to 5MB for fast processing.
+File upload: PDF, DOCX, TXT up to 5MB. Website scraping: Up to 20 pages with depth of 2 levels, respects robots.txt.
 
 ### How many chatbots can I create?
 
-On the Free plan, you can create one chatbot per email address. The upcoming Pro plan will remove this limit, allowing multiple chatbots per email.
+On the Free plan, you can create one chatbot per email address, but the content source can be either a file or a URL. The upcoming Pro plan will remove this limit, allowing multiple chatbots per email.
 
 ### Is my data secure?
 
-Documents are processed securely, stored in Qdrant with encryption, and not shared or used beyond creating your chatbot.
+Documents and scraped content are processed securely, stored in Qdrant with encryption, and not shared or used beyond creating your chatbot.
 
 ## Troubleshooting
 
@@ -329,7 +336,7 @@ Ensure the script tag is correctly pasted in the HTML or framework code. Check t
 
 ### Why is the chatbot giving incorrect answers?
 
-Ensure your document is clear, well-structured, and contains relevant information. Use headings and lists to improve retrieval. Re-upload a revised document if needed.
+Ensure your document or website is clear, well-structured, and contains relevant information. Use headings and lists to improve retrieval. Re-upload a revised document or provide a different URL if needed.
 
 ### What if I get a CORS error when embedding?
 
@@ -339,25 +346,30 @@ Contact [upindersangha01@gmail.com](mailto:upindersangha01@gmail.com) to verify 
 
 Check for typos in the script tag or bot ID. Ensure your website allows external scripts and there are no ad blockers interfering.
 
+### Why is my website not being scraped properly?
+
+Possible reasons include: robots.txt blocking scraping, complex site structure (e.g., JavaScript-heavy pages), connectivity issues, or exceeding the 20-page/2-level depth limit. Contact [upindersangha01@gmail.com](mailto:upindersangha01@gmail.com) for assistance.
+
 ## Best Practices
 
 ### How do I make my chatbot more effective?
 
--   Use clear, concise language in your document.
+-   Use clear, concise language in your document or website.
 -   Organize content with headings, bullet points, or numbered lists.
 -   Avoid jargon or ambiguous terms.
 -   Test the chatbot with common questions to ensure accuracy.
 
 ### How do I update my chatbot’s content?
 
-Upload a new file at [www.upindersangha.com/docative](https://www.upindersangha.com/docative) to receive a new script tag with a new bot ID.
+Upload a new file or provide a new URL at [www.upindersangha.com/docative](https://www.upindersangha.com/docative) to receive a new script tag with a new bot ID.
 
 ## Limitations
 
 ### What are Docative’s limitations?
 
 -   One chatbot per email on the Free plan (Pro plan will allow multiple).
--   Supports PDF, DOCX, TXT files up to 5MB.
+-   File upload: PDF, DOCX, TXT up to 5MB.
+-   Website scraping: Up to 20 pages with depth of 2 levels, respects robots.txt.
 -   English-only responses.
 -   Default chat UI (customization planned for future).
 -   No real-time human handoff.
@@ -366,7 +378,7 @@ Upload a new file at [www.upindersangha.com/docative](https://www.upindersangha.
 
 ### What’s planned for Docative?
 
--   Pro plan with multiple chatbots, automatic website scraping, chat analytics, advanced customization, and priority support.
+-   Pro plan with multiple chatbots, advanced website scraping (more pages, deeper crawling, multiple URLs per bot), chat analytics, advanced customization, and priority support.
 -   Multiple files per chatbot.
 -   Multilingual support.
 -   Customizable chat UI.

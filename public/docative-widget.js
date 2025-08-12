@@ -1,6 +1,7 @@
 (function () {
 	// Configuration
 	const config = {
+		// API_URL: "http://127.0.0.1:8000/chat",
 		// API_URL: "http://13.222.155.33:8000/chat",
 		API_URL: "https://docative.duckdns.org/chat", // Use this for production
 		WIDGET_ID: "custom-chatbot-widget",

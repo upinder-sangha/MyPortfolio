@@ -1,4 +1,3 @@
-<!-- components/docative/DocativeHero.vue -->
 <template>
   <div class="min-h-screen flex items-center py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -10,12 +9,12 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span class="block">Make Your</span>
               <span class="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 animate-gradient">
-                Docs
+                Content
               </span>
               <span class="block">Talkative</span>
             </h1>
             <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0">
-              Transform your static content into interactive conversations. Upload, customize, and embed AI-powered chatbot in minutes.
+              Transform your documents or static content into interactive conversations. Upload a document or provide a website URL, customize, and embed AI-powered chatbot in minutes.
             </p>
           </div>
           

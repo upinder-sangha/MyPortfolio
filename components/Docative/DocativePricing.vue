@@ -1,4 +1,3 @@
-<!-- components/docative/DocativePricing.vue -->
 <template>
   <section id="pricing" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="text-center mb-16">
@@ -24,6 +23,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
               <span class="text-gray-700">One chatbot per user</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="text-gray-700">File upload or website URL input</span>
             </li>
             <li class="flex items-start">
               <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +78,7 @@
               <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="text-gray-700">Automatic scraping of websites</span>
+              <span class="text-gray-700">Advanced website scraping (more pages, deeper crawling)</span>
             </li>
             <li class="flex items-start">
               <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

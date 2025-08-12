@@ -12,50 +12,40 @@
         class="absolute bottom-0 left-1/2 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-4000">
       </div>
     </div>
-
     <!-- Navbar -->
     <DocativeNavbar />
-
     <!-- Hero Section -->
     <section id="home" class="relative">
       <DocativeHero />
     </section>
-
     <!-- Who Is It For Section -->
     <section id="who-is-it-for" class="relative py-20 md:py-32 bg-gradient-to-br from-purple-50 to-pink-50">
       <DocativeWhoIsItFor />
     </section>
-
     <!-- Features Section -->
     <section id="features" class="relative py-20 md:py-32">
       <DocativeWhyChoose />
     </section>
-
     <!-- How It Works Section -->
     <section id="how-it-works" class="relative py-20 md:py-32 bg-gradient-to-br from-purple-50 to-pink-50">
       <DocativeHowItWorks />
     </section>
-
     <!-- Get Started Section (Form) -->
     <section id="get-started" class="relative py-20 md:py-32">
       <DocativeGetStarted />
     </section>
-
     <!-- Pricing Section -->
     <section id="pricing" class="relative py-20 md:py-32 bg-gradient-to-br from-purple-50 to-pink-50">
       <DocativePricing />
     </section>
-
     <!-- FAQ Section -->
     <section id="faq" class="relative py-20 md:py-32">
       <DocativeFAQ />
     </section>
-
     <!-- Bottom CTA -->
     <section class="relative py-20 md:py-32 bg-gradient-to-br from-pink-400 to-purple-600">
       <DocativeBottomCTA />
     </section>
-
     <!-- Footer -->
     <footer class="relative bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
       <DocativeFooter />
@@ -64,7 +54,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRouter } from 'vue-router';
 import DocativeNavbar from '~/components/Docative/DocativeNavbar.vue';
 import DocativeHero from '~/components/Docative/DocativeHero.vue';
 import DocativeWhoIsItFor from '~/components/Docative/DocativeWhoIsItFor.vue';
@@ -75,6 +66,8 @@ import DocativePricing from '~/components/Docative/DocativePricing.vue';
 import DocativeFAQ from '~/components/Docative/DocativeFAQ.vue';
 import DocativeBottomCTA from '~/components/Docative/DocativeBottomCTA.vue';
 import DocativeFooter from '~/components/Docative/DocativeFooter.vue';
+
+const router = useRouter();
 
 useHead({
   title: 'Docative | Make Your Documents Talk Back',
@@ -112,16 +105,36 @@ useHead({
 
 const chatbotLoaded = ref(false);
 
+// Function to clean up chatbot
+const cleanupChatbot = () => {
+  // Remove chatbot script
+  const chatbotScript = document.querySelector('script[data-bot-id="e93dc734-08ba-4575-8d0a-370899515add"]');
+  if (chatbotScript) {
+    chatbotScript.remove();
+  }
+  
+  // Remove chatbot elements
+  const chatbotElements = document.querySelectorAll('[id*="chatbot"], [class*="chatbot"]');
+  chatbotElements.forEach(element => {
+    element.remove();
+  });
+  
+  // Reset loaded state
+  chatbotLoaded.value = false;
+};
+
 function loadChatbotScript() {
   return new Promise((resolve, reject) => {
-    if (document.querySelector('script[data-bot-id="183aaf64-7477-48f0-bc9a-c6d521989e51"]')) {
+    // Check if script already exists
+    if (document.querySelector('script[data-bot-id="e93dc734-08ba-4575-8d0a-370899515add"]')) {
       resolve();
       return;
     }
+    
     const script = document.createElement('script');
-    script.src = 'https://www.upindersangha.com/docative-widget.js'; // Update to production URL
+    script.src = 'https://www.upindersangha.com/docative-widget.js';
     script.async = true;
-    script.setAttribute('data-bot-id', '183aaf64-7477-48f0-bc9a-c6d521989e51');
+    script.setAttribute('data-bot-id', 'e93dc734-08ba-4575-8d0a-370899515add');
     script.setAttribute('data-name', 'Docative');
     script.onload = () => {
       setTimeout(() => {
@@ -160,9 +173,15 @@ const activateChatbot = async () => {
 };
 
 onMounted(() => {
+  // Clean up any existing chatbot before loading a new one
+  cleanupChatbot();
+  
+  // Load the chatbot script
   loadChatbotScript().catch(error => {
     console.error('Failed to load chatbot script:', error);
   });
+  
+  // Set up demo button listeners
   const demoButtons = document.querySelectorAll('a[href="#demo"]');
   demoButtons.forEach(button => {
     button.addEventListener('click', (e) => {
@@ -171,6 +190,17 @@ onMounted(() => {
     });
   });
 });
+
+// Clean up chatbot when navigating away
+onBeforeUnmount(() => {
+  cleanupChatbot();
+});
+
+// Watch for route changes to clean up chatbot
+router.beforeEach((to, from, next) => {
+  cleanupChatbot();
+  next();
+});
 </script>
 
 <style scoped>
@@ -178,24 +208,19 @@ onMounted(() => {
   0% {
     transform: scale(1);
   }
-
   50% {
     transform: scale(1.2);
   }
-
   100% {
     transform: scale(1);
   }
 }
-
 .animate-blob {
   animation: blob 7s infinite;
 }
-
 .animation-delay-2000 {
   animation-delay: 2s;
 }
-
 .animation-delay-4000 {
   animation-delay: 4s;
 }

@@ -41,7 +41,6 @@
 
 <script setup>
 const openFAQIndex = ref(null)
-
 const toggleFAQ = (index) => {
   if (openFAQIndex.value === index) {
     openFAQIndex.value = null
@@ -49,22 +48,26 @@ const toggleFAQ = (index) => {
     openFAQIndex.value = index
   }
 }
-
 const faqs = [
   {
-    question: 'What file types work with Docative?',
-    answer: 'Docative currently supports PDF, DOCX, and TXT files. We\'re working on adding support for more file types in the future.',
+    question: 'What content sources work with Docative?',
+    answer: 'Docative currently supports PDF, DOCX, and TXT files, as well as website URLs. For websites, we scrape content from the provided URL and its subpages (up to 20 pages with a depth of 2 levels). We\'re working on adding support for more file types and content sources in the future.',
     bgBlurClass: 'bg-gradient-to-r from-indigo-500 to-purple-600'
   },
   {
     question: 'How do I add the chatbot to my site?',
-    answer: 'After uploading your document and providing your email, you\'ll receive a personalized script tag via email. Simply copy and paste this script into the HTML of your website, preferably just before the closing </body> tag. The chatbot will automatically appear on your site.',
+    answer: 'After uploading your content (file or URL) and providing your email, you\'ll receive a personalized script tag via email. Simply copy and paste this script into the HTML of your website, preferably just before the closing </body> tag. The chatbot will automatically appear on your site.',
     bgBlurClass: 'bg-gradient-to-r from-purple-500 to-pink-600'
   },
   {
     question: 'Is my data safe?',
-    answer: 'Yes, absolutely. We take data security very seriously. All documents are processed with end-to-end encryption, and we use industry-standard security practices to protect your information. Your documents are only used to train your specific chatbot and are not shared with third parties.',
+    answer: 'Yes, absolutely. We take data security very seriously. All documents and website content are processed with end-to-end encryption, and we use industry-standard security practices to protect your information. Your content is only used to train your specific chatbot and is not shared with third parties.',
     bgBlurClass: 'bg-gradient-to-r from-pink-500 to-rose-600'
+  },
+  {
+    question: 'What happens when I provide a website URL?',
+    answer: 'When you provide a website URL, our system scrapes content from that URL and its subpages (up to 20 pages with a depth of 2 levels). We respect robots.txt files and only scrape content that is allowed. The extracted text is then processed to create your chatbot, just like with uploaded files.',
+    bgBlurClass: 'bg-gradient-to-r from-teal-500 to-cyan-600'
   }
 ]
 </script>

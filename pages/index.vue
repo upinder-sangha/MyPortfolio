@@ -23,16 +23,13 @@
         />
       </svg>
     </template>
-
     <!-- Navbar -->
     <Navbar />
-
     <!-- Main Content -->
     <main class="relative z-1">
         <div class="relative">
     <!-- About Section -->
     <About />
-
     <!-- Other Sections -->
     <div class="relative z-10" style="margin-top: 100vh; pointer-events: none;">
       <div style="pointer-events: auto;">
@@ -49,9 +46,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRouter } from 'vue-router';
 
-// Shape Data
+const router = useRouter();
+
+// Shape Data (unchanged)
 const shapePathsMap = {
   hash: "M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5",
   htmltag: "M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5",
@@ -60,10 +60,11 @@ const shapePathsMap = {
   curlybraces: "M9.5 5H9a2 2 0 0 0-2 2v2c0 1-.6 3-3 3 1 0 3 .6 3 3v2a2 2 0 0 0 2 2h.5m5-14h.5a2 2 0 0 1 2 2v2c0 1 .6 3 3 3-1 0-3 .6-3 3v2a2 2 0 0 1-2 2h-.5",
   brackets: "M9 3H5V21H9M15 21H19V3H15"
 }
+
+// Rest of the shape code (unchanged)
 const shapeKeys = Object.keys(shapePathsMap)
 const number_of_shapes = 5
 const total_shapes = number_of_shapes * shapeKeys.length
-
 const colorClasses = [
   'stroke-info/40',
   'stroke-accent-content/40',
@@ -79,7 +80,7 @@ const sizeClasses = [
   'w-[6vw] h-[6vw] sm:w-[4vw] sm:h-[4vw] md:w-[2.5vw] md:h-[2.5vw]',
 ]
 
-// ===== Halton Function for Quasi-Random Positions =====
+// Halton Function (unchanged)
 function halton(index, base) {
   let result = 0
   let f = 1
@@ -92,27 +93,40 @@ function halton(index, base) {
   return result
 }
 
-// ===== Runtime Reactive State =====
+// Runtime Reactive State
 const shapes = ref([])
+
+// Function to clean up chatbot
+const cleanupChatbot = () => {
+  // Remove chatbot script
+  const chatbotScript = document.querySelector('script[data-bot-id="bd6cfd5a-e7d3-4ca0-a5d6-74b5e3bfc012"]');
+  if (chatbotScript) {
+    chatbotScript.remove();
+  }
+  
+  // Remove chatbot elements
+  const chatbotElements = document.querySelectorAll('[id*="chatbot"], [class*="chatbot"]');
+  chatbotElements.forEach(element => {
+    element.remove();
+  });
+};
 
 onMounted(() => {
   const script = document.createElement('script');
-  script.src = 'https://www.upindersangha.com/docative-widget.js'; // Update to production URL
+  script.src = 'https://www.upindersangha.com/docative-widget.js';
   script.async = true;
-  script.setAttribute('data-bot-id', 'e97ee9ec-1853-40ea-8cd2-bdfd4c6ec3ea');
+  script.setAttribute('data-bot-id', 'bd6cfd5a-e7d3-4ca0-a5d6-74b5e3bfc012');
   script.setAttribute('data-name', 'Upinder Singh Sangha');
   script.onload = () => console.log('Chatbot script loaded');
   script.onerror = () => console.error('Failed to load chatbot script');
   document.body.appendChild(script);
-
+  
   const startOffset = Math.floor(Math.random() * shapeKeys.length)
   const positions = []
-
   for (let i = 1; i <= total_shapes; i++) {
     const top = Math.floor(halton(i, 11) * 100)
     const left = Math.floor(halton(i, 7) * 100)
     const key = shapeKeys[(i + startOffset) % shapeKeys.length]
-
     positions.push({
       position: { top, left },
       path: shapePathsMap[key],
@@ -121,11 +135,21 @@ onMounted(() => {
       sizeClass: sizeClasses[Math.floor(Math.random() * sizeClasses.length)],
     })
   }
-
   shapes.value = positions
-})
+});
 
-// SEO Metadata
+// Clean up chatbot when navigating away
+onBeforeUnmount(() => {
+  cleanupChatbot();
+});
+
+// Watch for route changes to clean up chatbot
+router.beforeEach((to, from, next) => {
+  cleanupChatbot();
+  next();
+});
+
+// SEO Metadata (unchanged)
 useHead({
   title: 'Upinder Singh Sangha | Portfolio',
   meta: [
@@ -159,7 +183,7 @@ useHead({
 </script>
 
 <style scoped>
-/* Floating Animations */
+/* Floating Animations (unchanged) */
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(20px); }
