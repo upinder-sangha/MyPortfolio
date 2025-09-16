@@ -1,9 +1,20 @@
 [
 	{
 		"type": "experience",
-		"title": "Fleet Performance Analytics Developer",
+		"title": "AI/ML Developer",
+		"institution": "Empty Ad",
+		"year": "Oct 2024 - Present",
+		"headline": "Optimised analysis pipelines and automated sensor mappings using Python.",
+		"link": "https://emptyad.com/",
+		"logo": "empty_advertising_logo.jpeg",
+		"tags": ["Python", "Machine Learning", "SQL", "Geospatial Engineering"],
+		"details": "Developed a machine learning-powered impression prediction engine, from feature engineering and model design to deployment and delivery. Using LLMs with RAG, I forecasted high-crowd areas from event data to optimize ad targeting. I built ETL pipelines and storage on AWS, automated predictions via APIs, and containerized workflows with Docker/Kubernetes. I also delivered internal tools and dashboards for campaign planning, route exploration, and ad valuation, enabling smarter, data-driven decisions."
+	},
+	{
+		"type": "experience",
+		"title": "Data Scientist",
 		"institution": "Canada Steamship Lines",
-		"year": "May 2024 - Aug 2024",
+		"year": "Jan 2023 - Aug 2024",
 		"headline": "Optimised analysis pipelines and automated sensor mappings using Python.",
 		"link": "https://cslships.com/",
 		"logo": "CSL.png",
@@ -18,18 +29,23 @@
 		"headline": "Graduated with a GPA of 4.0/4.3.",
 		"link": "https://www.concordia.ca/",
 		"logo": "concordia.png",
-		"tags": ["Design Patterns", "Algorithms", "AI/ML", "Distributed Systems"],
+		"tags": [
+			"Design Patterns",
+			"Algorithms",
+			"AI/ML",
+			"Distributed Systems"
+		],
 		"details": "Graduated with a GPA of 4.0/4.3. Completed advanced coursework in distributed systems, software architecture, and AI/ML techniques. Developed expertise in applying design patterns and algorithms to solve real-world problems. Participated in research projects and team-based software development initiatives like a lease management system and , honing skills in scalable system design and cloud-based application development."
 	},
 	{
 		"type": "experience",
-		"title": "Deep Learning Research Intern",
-		"institution": "IIIT, Una",
-		"year": "Feb 2021 - June 2021",
+		"title": "ML Developer",
+		"institution": "Paytm Labs",
+		"year": "Aug 2021 - Nov 2022",
 		"headline": "Worked on stock market prediction using deep learning.",
-		"link": "https://iiitu.ac.in/",
-		"logo": "IIITU.png",
-		"tags": [ "Python", "Deep Learning", "Statistics", "Tensorflow"],
+		"link": "https://pi.paytm.com/",
+		"logo": "paytmlogo.jpeg",
+		"tags": ["Python", "Deep Learning", "Statistics", "Tensorflow"],
 		"details": "Developed a hybrid algorithm using LSTMs for stock market prediction, leveraging technical and sentiment analysis from over 10,000 Twitter posts, resulting in a 15% improvement in accuracy over traditional models. Conducted experiments with multiple machine learning models to forecast stock prices based on historical NASDAQ data, enhancing understanding of market behavior. Employed advanced data visualization techniques to analyze model performance, providing actionable insights for data-driven decision-making and compared findings from past research papers to existing models."
 	},
 	{
